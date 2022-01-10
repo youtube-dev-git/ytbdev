@@ -1,68 +1,104 @@
 {
-    "posts": [
-      {
-        "id": 1,
-        "title": "Lenovo G5080",
-        "date": "12/09/2021",
-        "attend": [
-          {
-            "id": "abc001",
-            "name": "brecht"
-          },
-          {
-            "id": "abc002",
-            "name": "bruno"
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "title": "HP G5080",
-        "date": "02/05/2021",
-        "attend": [
-          {
-            "id": "abc001",
-            "name": "brecht"
-          },
-          {
-            "id": "abc002",
-            "name": "bruno"
-          }
-        ]
-      }
-    ],
-    "Register": [
-      {
-        "id": 0,
-        "name": "Go to the gym",
-        "done": false
-      },
-      {
-        "name": "willy",
-        "id": 1
-      },
-      {
-        "name": "naomi",
-        "id": 2
-      },
-      {
-        "id": 3
-      },
-      {
-        "name": "youtube",
-        "id": 4
-      },
-      {
-        "name": "twitter",
-        "id": 5
-      },
-      {
-        "name": "instagram",
-        "id": 6
-      },
-      {
-        "name": "alex",
-        "id": 7
-      }
-    ]
-  }
+  "posts": [
+    {
+      "id": 1,
+      "title": "Lenovo G5080",
+      "date": "12/09/2021",
+      "attend": [
+        {
+          "id": "abc001",
+          "name": "brecht"
+        },
+        {
+          "id": "abc002",
+          "name": "bruno"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "HP G5080",
+      "date": "02/05/2021",
+      "attend": [
+        {
+          "id": "abc001",
+          "name": "brecht"
+        },
+        {
+          "id": "abc002",
+          "name": "bruno"
+        }
+      ]
+    }
+  ],
+  "Register": [
+    {
+      "id": 0,
+      "name": "Go to the gym",
+      "done": false
+    },
+    {
+      "name": "willy",
+      "id": 1
+    },
+    {
+      "name": "naomi",
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "name": "youtube",
+      "id": 4
+    },
+    {
+      "name": "twitter",
+      "id": 5
+    },
+    {
+      "name": "instagram",
+      "id": 6
+    },
+    {
+      "name": "alex",
+      "id": 7
+    },
+    {
+      "name": "brecht tankoua",
+      "id": 8
+    },
+    {
+      "name": "willy",
+      "id": 9
+    },
+    {
+      "name": "bibi",
+      "id": 10
+    },
+    {
+      "name": "bbb",
+      "id": 11
+    },
+    {
+      "name": null,
+      "id": 12
+    },
+    {
+      "name": "Nkweo william",
+      "id": 13
+    },
+    {
+      "name": "jjj",
+      "id": 14
+    },
+    {
+      "name": "junior",
+      "id": 15
+    },
+    {
+      "name": null,
+      "id": 16
+    }
+  ]
+}
