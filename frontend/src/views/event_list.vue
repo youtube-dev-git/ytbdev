@@ -6,8 +6,8 @@
 </template>
 
 <script>
-// import eventservice from '@/services/event_service.js';
-import axios from 'axios'
+import eventservice from '@/services/event_service.js';
+// import axios from 'axios'
 import card from '@/components/card.vue'
 export default {
       data(){
@@ -16,8 +16,7 @@ export default {
       }
   },
     created(){
-     axios
-     .get('http://localhost:3000/posts')
+     eventservice.getInfo()
      .then(response =>{
          this.events = response.data
          console.log(response.data)

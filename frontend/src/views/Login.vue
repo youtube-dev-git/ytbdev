@@ -10,15 +10,13 @@
      </div>
 
          <form @submit="login">
-        <div class="form-control ">
-          <input type="text" v-model="email" id="email" >
+        <div class="login-control ">
+          <input type="text" v-model="email" id="email" required>
           <label>Email</label>
-          <small>Erreur</small>
         </div>
-        <div class="form-control">
-          <input type="password" v-model="password" id="password" >
+        <div class="login-control">
+          <input type="password" v-model="password" id="password" required >
           <label>Password</label>
-          <small>Erreur</small>
         </div>
         <button class="btn-login">Se connecter</button>
             <router-link to="/">ckki</router-link>
@@ -54,28 +52,19 @@ export default {
             this.testss = personne.nom[0];
             console.log(personne.nom[0]);
             console.log(this.testss);
-             alert('alert');
+            
          },
         showError: function(input, message){
             const formcontrol = input.parentElement;
-            formcontrol.className = 'form-control error'; 
+            formcontrol.className = 'login-control error'; 
             const small = formcontrol.querySelector('small');
             small.innerText = message;
         },
     login(e){
-        const pswd = document.getElementById("password");
-        const mail = document.getElementById("email");
-        
+
         if(this.email && this.password){
-            console.log("connexion reussi");
-        }
-        if(!this.email){
-            this.showError(mail, 'Email Requis');
-        }
-        if(!this.password){
-            this.showError(pswd, 'Mot de passe Requis');
-        }
-        
+            alert('Connexion reussi')
+        }        
         e.preventDefault()
     }
       
@@ -132,12 +121,12 @@ width: 350px;
     text-decoration: none;
     color: lightblue;
 }
- .form-control {  
+ .login-control {  
   position: relative;  
   margin: 35px 0 40px;  
   width: 300px;  
  }  
- .form-control input {  
+ .login-control input {  
   background-color: transparent;  
   border: 0;  
   border-bottom: 2px #fff solid;  
@@ -147,43 +136,28 @@ width: 350px;
   font-size: 18px;  
   color: #fff;   
  }  
- .form-control input:focus,  
- .form-control input:valid {  
+ .login-control input:focus,  
+ .login-control input:valid {  
   outline: 0;  
   border-bottom-color: lightblue;  
  }  
- .form-control label {  
+ .login-control label {  
   position: absolute;  
-  top: 15px;  
+  top: 20px;  
   left: 0;  
   pointer-events: none;  
  }  
- .form-control label  {  
+ .login-control label  {  
   display: inline-block;  
-  font-size: 18px;  
-  min-width: 5px;  
-  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);  
+  font-size: 20px;  
+  min-width: 5px;   
  }  
- .form-control input:valid + label ,  
- .form-control input:focus + label  {  
+ .login-control input:valid + label ,  
+ .login-control input:focus + label  {  
   color: lightblue;  
   transform: translateY(-33px);  
  }
 
-.form-control.success input{
-    border-bottom-color: #2ecc71 ;
-}
-.form-control.error input{
-    border-bottom-color: #e74c3c ;
-}
-.form-control small{
-    visibility: hidden;
-    font-size: 15px;
-    color: #f36954 ;
-}
-.form-control.error small{
-visibility: visible;
-}
 .btn-login{
     cursor: pointer;
     display: inline-block;

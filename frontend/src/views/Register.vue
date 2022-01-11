@@ -12,57 +12,57 @@
       <img v-bind:src="require('../../src/assets/' + signUp_pic[pos].val)">
      </div>
     <div class="sign_container">
-      <form id="form" class="form">
+      <form id="form" class="form" @submit.prevent="register">
            <h2>S'inscrire</h2>
         <div class="contains">
-            <div class="sign_form-control">
+            <div class="sign-control">
             <label for="name">Nom</label>
-            <input type="text" id="name" placeholder="Entrer votre Nom" />
+            <input type="text" id="name" v-model="name" placeholder="Entrer votre Nom" />
             <small>Error message</small>
             </div>
-            <div class="sign_form-control">
+            <div class="sign-control">
             <label for="pseudo">Pseudo</label>
             <input type="text" id="pseudo" placeholder="Entrer votre Pseudo" />
             <small>Error message</small>
             </div>
         </div>
         <div class="contains">
-            <div class="sign_form-control">
+            <div class="sign-control">
             <label for="mail">Email</label>
-            <input type="text" id="mail" placeholder="Entrer votre Email" />
+            <input type="text" id="mail" v-model="email" placeholder="Entrer votre Email" />
             <small>Error message</small>
             </div>
-            <div class="sign_form-control">
+            <div class="sign-control">
             <label for="phone">Telephone</label>
             <input type="text" id="phone" placeholder="Entrer votre numero" />
             <small>Error message</small>
             </div>
         </div>
          <div class="contains">
-            <div class="sign_form-control">
-                <label for="profil">Image Profil</label>
-                <input type="file" name="profil" id="">
+            <div class="sign-control">
+                <label for="files">Image file</label>
+                <input type="file" name="files" id="files">
                 <small>Error message</small>
             </div>
-            <div class="sign_form-control">
+            <div class="sign-control">
                 <label for="sex">sex</label>
-                <select name="" id="">
+                <select name="sex" id="sex">
                     <option value="M">M</option>
                     <option value="F">F</option>
                 </select>
             </div>
          </div>
-        <div class="sign_form-control">
+        <div class="sign-control">
           <label for="sign_password">Mot de Passe</label>
-          <input type="password" id="sign_password" placeholder="Enter Mot de Passe" />
+          <input type="password" id="sign_password" v-model="password" placeholder="Enter Mot de Passe" />
           <small>Error message</small>
         </div>
-        <div class="sign_form-control">
+        <div class="sign-control">
           <label for="sign_password2">Confirm Password</label>
           <input type="password" id="sign_password2" placeholder="Enter password again"/>
           <small>Error message</small>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" @click="submit">Submit</button>
       </form>
     </div>
 </div>
@@ -81,6 +81,7 @@ export default {
           { val: "login_admin.png" },
         ],
         email:null,
+        name:null,
         password:null,
         pos:0
       }
@@ -120,6 +121,31 @@ export default {
         signUp_color.style.backgroundColor='rgb(52, 52, 53)'
           this.test();
           this.pos=2;
+    },
+    showError: function(input, message){
+            const formcontrol = input.parentElement;
+            formcontrol.className = 'form-control error'; 
+            const small = formcontrol.querySelector('small');
+            small.innerText = message;
+        },
+    register(){
+          this.$store.dispatch('register', {
+             name: this.name
+         })
+        .then( () =>{
+         this.$router.push({name: 'Event_list'})
+         })
+        if(this.email && this.password){
+            console.log("connexion reussi");
+        }
+        if(!this.email){
+            
+        }
+        if(!this.password){
+            alert('hhjh')
+            document.getElementById("phone").style.borderColor ="red"
+        }
+
     }
 },
 }
@@ -208,24 +234,25 @@ h2 {
   margin: 0 0 20px;
 }
 
+
 .form {
   padding: 30px 20px;
 }
 
-.sign_form-control {
+.sign-control {
   margin-bottom: 10px;margin-right: 15px;
   padding-right: 20px;
   padding-bottom: 10px;
   position: relative;
 }
 
-.sign_form-control label {
+.sign-control label {
   color: #777;
   display: block;
   margin-bottom: 5px;
 }
 
-.sign_form-control input {
+.sign-control input {
   border: 2px solid #f0f0f0;
   border-radius: 4px;
   display: block;
@@ -234,20 +261,20 @@ h2 {
   font-size: 14px;
 }
 
-.sign_form-control input:focus {
+.sign-control input:focus {
   outline: 0;
   border-color: #777;
 }
 
-.sign_form-control.success input {
+.sign-control.success input {
   border-color: var(--success-color);
 }
 
-.sign_form-control.error input {
+.sign-control.error input {
   border-color: var(--error-color);
 }
 
-.sign_form-control small {
+.sign-control small {
   color: var(--error-color);
   position: absolute;
   bottom: 0;
@@ -255,7 +282,7 @@ h2 {
   visibility: hidden;
 }
 
-.sign_form-control.error small {
+.sign-control.error small {
   visibility: visible;
 }
 
