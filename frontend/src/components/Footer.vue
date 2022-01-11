@@ -4,7 +4,7 @@
        <div class="blog_end-contain">
           <div class="blog_ends">
             <div class="blog-end-info">
-              <h1><i class="lab la-youtube"></i> YOUTUBE<span> Dev</span></h1>
+              <h1> YOUTUBE<span> Dev</span></h1>
               <div class="blog-reseau">
                 <i class="lab la-facebook-f"></i>
                 <i class="lab la-github"></i>
@@ -68,7 +68,7 @@
     /* display: flex; */
     margin-left: 17px;
     margin-top: 15px;
-    font-size: 20px;
+    font-size: 30px;
     color: rgb(196, 192, 192);
 }
 .blog-end-info span{

@@ -21,11 +21,12 @@
         <div class="tab-panels">
             <section id="tabpanel_1" class="tab-panel">
              <div class="sylab">
-               <div class="sylab_info">
-                  <img src="@/assets/html_course_1.jpg" alt="">
+               <div v-for="sylab in html_filter" :key="sylab.id" class="sylab_info">
+                 <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
+                  <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                   <div class="sylab_item">
-                    <h1>HTML et CSS : la formation ULTIME</h1>
-                    <p>Nom L'expert | <span>Voir info</span> </p>
+                    <h1>{{sylab.title}}</h1>
+                    <p>{{sylab.expert}} | <span>Voir info</span> </p>
                     <div class="sylab_star">
                       <i class="las la-star"></i>
                       <i class="las la-star"></i>
@@ -37,27 +38,32 @@
                       <p>Frontend</p>
                     </div>
                   </div>
-               </div>
-               <div class="sylab_info">
-                   <img src="@/assets/html_course_4.jpg" alt="">
-                   <div class="sylab_item">
-                    <h1>Apprendre à coder en HTML et CSS : Cours complet</h1>
-                    <p>Nom L'expert | <span>Voir info</span> </p>
-                    <div class="sylab_star">
-                        <i class="las la-star"></i>
-                        <i class="las la-star"></i>
-                        <i class="las la-star"></i>
-                        <i class="las la-star"></i>
-                    </div>
-                    <div class="sylab_link">
-                        <p>Frontend</p>
-                    </div>
-                   </div>
+                 </router-link>
                </div>
              </div>
             </section>
             <section id="tabpanel_2" class="tab-panel">
-            <h2>6B. Rauchbier</h2>
+              <div class="sylab">
+               <div v-for="sylab in js_filter" :key="sylab.id" :sylab="sylab" class="sylab_info">
+                  <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
+                    <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
+                    <div class="sylab_item">
+                    <h1>{{sylab.title}}</h1>
+                    <p>{{sylab.expert}} | <span>Voir info</span> </p>
+                    <div class="sylab_star">
+                      <i class="las la-star"></i>
+                      <i class="las la-star"></i>
+                      <i class="las la-star"></i>
+                      <i class="las la-star"></i>
+                      <i class="las la-star"></i>
+                    </div>
+                    <div class="sylab_link">
+                      <p>Backend</p>
+                    </div>
+                  </div>
+                  </router-link>
+               </div>
+             </div>
             </section>
             <section id="tabpanel_3" class="tab-panel">
             <h2>6C. tabpanel_3 Bock</h2>
@@ -93,7 +99,33 @@
 </template>
 <script>
 export default {
-    
+      props:{
+        sylab: Object
+    },
+    data(){
+      return{
+          sylabus: [
+          {id:"0", title: "HTML et CSS : la formation ULTIME", img:"html_course_1.jpg", tags:"html", mark:"5", expert:"Mr Martin" },
+          {id:"1", title: "Apprendre à coder en HTML et CSS : Cours complet", img:"html_course_4.jpg", tags:"html", mark:"5", expert:"Mr Martin" },
+          {id:"2", title: "JavaScript : la formation ULTIME", img:"javascript_1.jpg", tags:"js", mark:"5", expert:"Mr Martin" },
+          {id:"3", title: "Apprendre à coder en JavaScript : Cours complet", img:"javascript_2.jpg", tags:"js", mark:"5", expert:"Mr Martin" },
+          {id:"4", title: "PHP & Mysql : la formation ULTIME", img:"php_1.jpg", tags:"php", mark:"5", expert:"Mr Martin" },
+        ],
+        search:'frontend'
+      }
+    },
+    computed:{
+      html_filter(){
+        return this.sylabus.filter((sylab) => {
+          return sylab.tags.toLowerCase().includes('html')
+        })
+      },
+      js_filter(){
+        return this.sylabus.filter((sylab) => {
+          return sylab.tags.toLowerCase().includes('js')
+        })
+      }
+    }
 }
 </script>
 <style scoped>

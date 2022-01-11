@@ -34,71 +34,13 @@
   "Register": [
     {
       "id": 0,
-      "name": "Go to the gym",
-      "done": false
-    },
-    {
-      "name": "willy",
-      "id": 1
-    },
-    {
-      "name": "naomi",
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "name": "youtube",
-      "id": 4
-    },
-    {
-      "name": "twitter",
-      "id": 5
-    },
-    {
-      "name": "instagram",
-      "id": 6
-    },
-    {
-      "name": "alex",
-      "id": 7
+      "name": "Brecht",
+      "password": "susanoo"
     },
     {
       "name": "brecht tankoua",
-      "id": 8
-    },
-    {
-      "name": "willy",
-      "id": 9
-    },
-    {
-      "name": "bibi",
-      "id": 10
-    },
-    {
-      "name": "bbb",
-      "id": 11
-    },
-    {
-      "name": null,
-      "id": 12
-    },
-    {
-      "name": "Nkweo william",
-      "id": 13
-    },
-    {
-      "name": "jjj",
-      "id": 14
-    },
-    {
-      "name": "junior",
-      "id": 15
-    },
-    {
-      "name": null,
-      "id": 16
+      "password": "susan",
+      "id": 1
     }
   ]
 }
