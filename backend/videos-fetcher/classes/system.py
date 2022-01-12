@@ -1,18 +1,23 @@
 from youtubeApiHandler import YoutubeAPIHandler
-from syllabusGDBHandler import SyllabusGraphDBHandler
+from syllabusGraphDBHandler import SyllabusGraphDBHandler
+from syllabus import Syllabus
 
 
 class System:
     def __init__(self) -> None:
         pass    
     
-    def save_syllabus(self, syllabus : dict):
+    @classmethod
+    def save_syllabus(self, syllabus : Syllabus):
         SyllabusGraphDBHandler.save_syllabus(syllabus)
-    
-    def videos_syllabus_matching(self, syllabus : dict):
+        System.videos_syllabus_matching(syllabus)
+        
+    @classmethod
+    def videos_syllabus_matching(self, syllabus : Syllabus):
         syllabus_videos_list = YoutubeAPIHandler.fetch_by_query(syllabus)
         SyllabusGraphDBHandler.save_syllabus_videos(syllabus_videos_list)
         
+    @classmethod
     def all_syllabus_matching(self):
         pass
         
