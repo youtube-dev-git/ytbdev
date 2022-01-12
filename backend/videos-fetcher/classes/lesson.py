@@ -15,5 +15,13 @@ class Lesson(BaseModel):
         
     def appendVideos(self, videosJSON : dict) -> None:
         for video in videosJSON:
-            self.videos.append(LessonVideo(video))
+            self.videos.append(LessonVideo(
+                videoId = video["items"]["id"],
+                title = video["items"]["snippet"]["title"],
+                viewCount= video["items"]["statistics"]["viewCount"],
+                description = video["items"]["snippet"]["description"],
+                published_at = video["items"]["snippet"]["publishedAt"],
+                thumbnails_medium = video["items"]["snippet"]["thumbnails"]["medium"]["url"],
+                channel_id = video["items"]["snippet"]["channelId"]
+            ))
         

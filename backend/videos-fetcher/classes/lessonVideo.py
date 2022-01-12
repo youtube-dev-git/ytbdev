@@ -1,28 +1,36 @@
 
 
+from typing import Any
 from pydantic.main import BaseModel
 
 
 class LessonVideo(BaseModel):
     videoId : str 
+    title : str
     viewCount: int
-    channel_id : str 
-    title : str 
     description : str 
     published_at : str 
     thumbnails_medium : str
-    channel_title : str
-    
-    def __init__(self, **videoJSON : dict ) -> None:
-        self.videoId = videoJSON["items"]["id"]
-        self.title = videoJSON["items"]["snippet"]["title"]
-        self.viewCount = videoJSON["items"]["statistics"]["viewCount"]
-        self.channel_id = videoJSON["items"]["snippet"]["channelId"]
-        self.description = videoJSON["items"]["snippet"]["description"]
-        self.published_at = videoJSON["items"]["snippet"]["publishedAt"]
-        self.thumbnails_medium = videoJSON["items"]["snippet"]["thumbnails"]["medium"]["url"]
+    channel_id : str 
+    def __init__(__pydantic_self__, **data: Any) -> None:
+        super().__init__(**data)
 
-
-print(LessonVideo(
-    
-))
+# videoJSON = {
+#     "items" : {
+#         "id" : "1fds45Fj",
+#         "snippet" : {
+#             "title" : "Why I didn't ate my father",
+#             "channelId" : "fjjfiodsqpjf",
+#             "description" : "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+#             "publishedAt" : "12/12/12",
+#             "thumbnails" : {
+#                 "medium" : {
+#                     "url" : "https://jfkdsq"
+#                 }
+#             }
+#         },
+#         "statistics" : {
+#             "viewCount" : 256
+#         }
+#     }
+# }
