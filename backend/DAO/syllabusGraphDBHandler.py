@@ -1,4 +1,4 @@
-from syllabus import Syllabus
+from ..videos_fetcher.classes.syllabus import Syllabus
 
 class SyllabusGraphDBHandler:
     def __init__(self) -> None:

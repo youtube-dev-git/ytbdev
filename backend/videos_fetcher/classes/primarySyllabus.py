@@ -16,6 +16,7 @@ class PrimarySyllabus(BaseModel):
             syllabus.appendLesson(lesson)
         return syllabus
 
+
 # dico = {
 #     "title" : "john wick", 
 #     "lessons" : ["1", "2", "parabellum"]

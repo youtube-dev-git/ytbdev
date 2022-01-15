@@ -1,0 +1,48 @@
+{
+    "title": "Formation HTML CSS pour les nuls",
+    "lessons": [
+        {
+            "title": "Utilisation des divs",
+            "videos": [
+                {
+                    "items": {
+                        "id": "1fds45Fj",
+                        "snippet": {
+                            "title": "Why I didn't ate my father",
+                            "channelId": "fjjfiodsqpjf",
+                            "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                            "publishedAt": "12/12/12",
+                            "thumbnails": {
+                                "medium": {
+                                    "url": "https://jfkdsq"
+                                }
+                            }
+                        },
+                        "statistics": {
+                            "viewCount": 256
+                        }
+                    }
+                },
+                {
+                    "items": {
+                        "id": "1fds45Fj",
+                        "snippet": {
+                            "title": "Why I didn't ate my father",
+                            "channelId": "fjjfiodsqpjf",
+                            "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                            "publishedAt": "12/12/12",
+                            "thumbnails": {
+                                "medium": {
+                                    "url": "https://jfkdsq"
+                                }
+                            }
+                        },
+                        "statistics": {
+                            "viewCount": 256
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
