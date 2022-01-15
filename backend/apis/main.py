@@ -15,7 +15,38 @@ class Inscription(BaseModel):
     statut: str
     photo: Optional[str]
     tel: int
-    
+class Admin(BaseModel):
+    id_Admin:int
+    name : str
+    email: str
+    passord: str
+    genre: str
+    photo: Optional[str]
+    tel: int
+    id_Learner:int
+    id_Expert:int
+class leaner(BaseModel):
+    id_Learner:int
+    name : str
+    email: str
+    passord: str
+    genre: str
+    photo: Optional[str]
+    tel: int
+    id_Admin:int
+    id_Expert:int
+
+class Expert(BaseModel):
+    id_Expert:int
+    name : str
+    email: str
+    passord: str
+    genre: str
+    photo: Optional[str]
+    tel: int
+    id_Admin:int
+    id_Learner:int
+
 @app.get("/")
 def root():
     return "subscription"
