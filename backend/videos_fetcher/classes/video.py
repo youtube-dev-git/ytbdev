@@ -4,7 +4,7 @@ from typing import Any
 from pydantic.main import BaseModel
 
 
-class LessonVideo(BaseModel):
+class Video(BaseModel):
     videoId : str 
     title : str
     viewCount: int

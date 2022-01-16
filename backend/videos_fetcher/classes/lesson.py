@@ -1,6 +1,6 @@
 from typing import Any, List, Optional
 from pydantic.main import BaseModel
-from lessonVideo import LessonVideo
+from video import Video
 
 
 class Lesson(BaseModel):
@@ -15,7 +15,7 @@ class Lesson(BaseModel):
         
     def appendVideos(self, videosJSON : dict) -> None:
         for video in videosJSON:
-            self.videos.append(LessonVideo(
+            self.videos.append(Video(
                 videoId = video["items"]["id"],
                 title = video["items"]["snippet"]["title"],
                 viewCount= video["items"]["statistics"]["viewCount"],
