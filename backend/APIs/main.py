@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from .user import User
-from ..DAO.DAOObject import DAOObject
+from .users import User
+from ..DAO.DAOObjects import DAOObject
 
 app = FastAPI()
 db = DAOObject()

@@ -1,5 +1,5 @@
 from ..videos_fetcher.classes.syllabus import Syllabus
-from ..APIs.user import User, Learner, Admin, Expert
+from ..APIs.users import User, Learner, Admin, Expert
 class DAOObject:
     def __init__(self) -> None:
         pass
