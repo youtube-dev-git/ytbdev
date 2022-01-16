@@ -30,7 +30,7 @@ phone_user VARCHAR(15),
 password_user VARCHAR(50),
 gender_user CHAR(1),
 PRIMARY KEY (id_user)),CREATE INDEX idx_user
-ON users (id_user); ENGINE=InnoDB;
+ON users (id_userl); ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS admin ;
 CREATE TABLE admin (id_admin INT AUTO_INCREMENT NOT NULL,
