@@ -1137,7 +1137,7 @@
 									"font": "Arial;13;0",
 									"left": 511.5,
 									"top": 236.5,
-									"width": 72.841796875,
+									"width": 72,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF+AW04UPt1q1c="
@@ -1605,7 +1605,7 @@
 									"font": "Arial;13;0",
 									"left": 702.5,
 									"top": 332.5,
-									"width": 185.5126953125,
+									"width": 185,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF+AW4u8fw/MW4="
@@ -18894,9 +18894,12 @@
 											"_parent": {
 												"$ref": "AAAAAAF+X5YdwkH8kbg="
 											},
-											"visible": false,
 											"font": "Arial;13;0",
-											"height": 13
+											"left": 621,
+											"top": 501,
+											"width": 229.4169921875,
+											"height": 13,
+											"text": "«interface»"
 										},
 										{
 											"_type": "LabelView",
@@ -18906,7 +18909,7 @@
 											},
 											"font": "Arial;13;1",
 											"left": 621,
-											"top": 503,
+											"top": 516,
 											"width": 229.4169921875,
 											"height": 13,
 											"text": "DAOObject"
@@ -18939,7 +18942,7 @@
 									"left": 616,
 									"top": 496,
 									"width": 239.4169921875,
-									"height": 25,
+									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF+X5YdwkH9IDY="
 									},
@@ -18964,7 +18967,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 616,
-									"top": 521,
+									"top": 534,
 									"width": 239.4169921875,
 									"height": 10
 								},
@@ -18989,7 +18992,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 621,
-											"top": 536,
+											"top": 549,
 											"width": 229.4169921875,
 											"height": 13,
 											"text": "+saveExpert(e: Expert)",
@@ -19006,7 +19009,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 621,
-											"top": 551,
+											"top": 564,
 											"width": 229.4169921875,
 											"height": 13,
 											"text": "+saveLearner(l: Learner)",
@@ -19023,7 +19026,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 621,
-											"top": 566,
+											"top": 579,
 											"width": 229.4169921875,
 											"height": 13,
 											"text": "+saveAdmin(a: Admin)",
@@ -19040,7 +19043,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 621,
-											"top": 581,
+											"top": 594,
 											"width": 229.4169921875,
 											"height": 13,
 											"text": "+connectUser(mail: str, mdp: str): User",
@@ -19057,7 +19060,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 621,
-											"top": 596,
+											"top": 609,
 											"width": 229.4169921875,
 											"height": 13,
 											"text": "+save_Syllabus(s: Syllabus)",
@@ -19074,7 +19077,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 621,
-											"top": 611,
+											"top": 624,
 											"width": 229.4169921875,
 											"height": 13,
 											"text": "+save_syllabus_videos(s: Syllabus)",
@@ -19091,7 +19094,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 621,
-											"top": 626,
+											"top": 639,
 											"width": 229.4169921875,
 											"height": 13,
 											"text": "+read_syllabus(id: str): Syllabus",
@@ -19108,7 +19111,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 621,
-											"top": 641,
+											"top": 654,
 											"width": 229.4169921875,
 											"height": 13,
 											"text": "+read_syllabus_videos(id: str): Syllabus",
@@ -19117,7 +19120,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 616,
-									"top": 531,
+									"top": 544,
 									"width": 239.4169921875,
 									"height": 128
 								},
@@ -19155,7 +19158,7 @@
 							"left": 616,
 							"top": 496,
 							"width": 239.4169921875,
-							"height": 163,
+							"height": 176,
 							"nameCompartment": {
 								"$ref": "AAAAAAF+X5YdwkH8kbg="
 							},
@@ -19181,6 +19184,7 @@
 						"$ref": "AAAAAAF+X5Xjo0HYKrM="
 					},
 					"name": "DAOObject",
+					"stereotype": "interface",
 					"operations": [
 						{
 							"_type": "UMLOperation",
