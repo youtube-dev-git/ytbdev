@@ -11,7 +11,7 @@ id_Syllabus INT,
 PRIMARY KEY (id_lesson)) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS video ;
-CREATE TABLE video (id_video VARCHAR AUTO_INCREMENT NOT NULL,
+CREATE TABLE video (id_video VARCHAR(50) NOT NULL,
 titre_video VARCHAR(50),
 viewCount_video INT,
 description_video TEXT,
@@ -29,7 +29,8 @@ photo_user VARCHAR(50),
 phone_user VARCHAR(15),
 password_user VARCHAR(50),
 gender_user CHAR(1),
-PRIMARY KEY (id_user)) ENGINE=InnoDB;
+PRIMARY KEY (id_user)),CREATE INDEX idx_user
+ON users (id_user); ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS admin ;
 CREATE TABLE admin (id_admin INT AUTO_INCREMENT NOT NULL,
