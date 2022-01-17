@@ -46,26 +46,7 @@ class LearnerCreate(LearnerBase):
 class Learner(LearnerBase):
     id: int
     users_id: int
-    
-    class Config:
-        orm_mode = True
-
-class SyllabusBase(BaseModel):
-    title: str
-class SyllabusCreate(SyllabusBase):
-    pass
-class Syllabus(SyllabusBase):
-    id: int
-    
-    class Config:
-        orm_mode = True
-class LessonBase(BaseModel):
-    title: str
-class LessonCreate(LessonBase):
-    pass
-class Lesson(LessonBase):
-    id: int
-    syllabus_id: int
+    Experts: List[Expert] = []
     
     class Config:
         orm_mode = True
@@ -85,6 +66,17 @@ class Video(VideoBase):
     
     class Config:
         orm_mode = True
+class LessonBase(BaseModel):
+    title: str
+class LessonCreate(LessonBase):
+    pass
+class Lesson(LessonBase):
+    id: int
+    syllabus_id: int
+    videos: List[Video] = []
+    class Config:
+        orm_mode = True
+
 class UserBase(BaseModel):
     email: str
     name: str
@@ -92,14 +84,24 @@ class UserBase(BaseModel):
     gender: str
     phone: str
 
+class SyllabusBase(BaseModel):
+    title: str
+class SyllabusCreate(SyllabusBase):
+    pass
+class Syllabus(SyllabusBase):
+    id: int
+    lessons: List[Lesson] = []
+    class Config:
+        orm_mode = True
+
 class UserCreate(UserBase):
     password : str
-    
+
 class User(UserBase):
     id: int
     is_active: bool
     admin: List[Admin] = []
-    Learner: List[Learner] = []
+    learners: List[Learner] = []
     
     class Config:
         orm_mode = True

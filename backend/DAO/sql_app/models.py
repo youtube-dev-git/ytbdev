@@ -21,7 +21,7 @@ class User(Base):
    # items = relationship("Item", back_populates="owner")
 
 class Admin(Base):
-   __tablename__ = "admin"
+    __tablename__ = "admin"
 
     id = Column(Integer, primary_key=True, index=True)
     usersId = Column(Integer, ForeignKey("users.id"))
@@ -29,7 +29,7 @@ class Admin(Base):
     users = relationship("Admin", back_populates="Users")
     
 class Learner(Base):
-   __tablename__ = "learner"
+    __tablename__ = "learner"
 
     id = Column(Integer, primary_key=True, index=True)
     usersId = Column(Integer, ForeignKey("users.id"))
@@ -37,7 +37,7 @@ class Learner(Base):
     users = relationship("users", back_populates="admin")
     
 class Expert(Base):
-   __tablename__ = "expert"
+    __tablename__ = "expert"
 
     id = Column(Integer, primary_key=True, index=True)
     learnerId = Column(Integer, ForeignKey("learner.id"))
