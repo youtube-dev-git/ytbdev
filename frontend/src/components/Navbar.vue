@@ -8,10 +8,10 @@
         </div>
         <div>
             <ul class="main_nav">
-                <li><a href="">Home</a></li>
-                <li><a href="">Categories</a></li>
-                <li><a href="">Se connecter</a></li>
-                <li><a href="">S'inscrire</a></li>
+                <li><router-link :to="{name: 'Home'}" class="link">Home</router-link></li>
+                <li><router-link :to="{name: 'Login'}" class="link">Categories</router-link></li>
+                <li><router-link :to="{name: 'Login'}" class="link">Se Connecter</router-link></li>
+                <li><router-link :to="{name: 'Register'}" class="link">S'inscrire</router-link></li>
                 <li>
                     <div class="search">
                         <div class="icon"></div>
@@ -63,6 +63,10 @@ nav{
     text-transform: uppercase;
     font-weight: 550;
 }
+.link{
+    color: rgb(73, 72, 70);
+    font-size: 21px;
+}
 .main_nav{
 float: right;
 list-style: none;
@@ -75,11 +79,28 @@ align-items: center;
     display: inline-block;
     margin-left: 25px;
 }
-.main_nav li a{
+.main_nav li .link:link,
+.main_nav li .link:visited {
+    padding: 10px 0;
     text-decoration: none;
     color: rgba(90, 86, 86, 0.979);
-    font-size: 17.5px;
     letter-spacing: 1.1px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.25;
+}
+.main_nav li .link::after {
+    content: '';
+    display: block;
+    width: 0;
+    border-bottom: 2px solid orangered;
+    transition: width .9s;
+}
+.main_nav li .link:hover::after {
+    width: 100%;
+    color: orangered;
+}
+.main_nav li .link:hover{
+    color: orangered;
 }
 .search{
     position: relative;

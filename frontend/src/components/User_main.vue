@@ -22,7 +22,7 @@
             <section id="tabpanel_1" class="tab-panel">
              <div class="sylab">
                <div v-for="sylab in html_filter" :key="sylab.id" class="sylab_info">
-                 <router-link :to="{name: 'Home' }" class="link">
+                 <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
                   <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                   <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
@@ -45,7 +45,7 @@
             <section id="tabpanel_2" class="tab-panel">
               <div class="sylab">
                <div v-for="sylab in js_filter" :key="sylab.id" :sylab="sylab" class="sylab_info">
-                  <router-link :to="{name: 'Login' }" class="link">
+                  <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
                     <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                     <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
@@ -77,7 +77,7 @@
     <div class="all_sylab">
        <div class="sylab_all">
                <div v-for="sylab in all" :key="sylab.id" class="sylab_info">
-                 <router-link :to="{name: 'Login'}" class="link">
+                 <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
                   <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                   <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
@@ -240,7 +240,6 @@ Tabs : debut
 /* Tabs : fin */
 .sylab{
     display: flex;  
-    overflow: hidden;
 }
 .sylab_all{
 display: flex;
