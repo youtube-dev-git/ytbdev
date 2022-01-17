@@ -10,7 +10,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String(50), unique=True, index=True)
     name = Column(String(50), unique=True, index=True)
-    password = Column(String(50), unique=True, index=True)
+   # password = Column(String(50), unique=True, index=True)
     photo = Column(String(50))
     gender = Column(String(1))
     phone = Column(String(15))
@@ -24,7 +24,7 @@ class Admin(Base):
    __tablename__ = "admin"
 
     id = Column(Integer, primary_key=True, index=True)
-    users_id = Column(Integer, ForeignKey("users.id"))
+    usersId = Column(Integer, ForeignKey("users.id"))
     
     users = relationship("Admin", back_populates="Users")
     
@@ -32,7 +32,7 @@ class Learner(Base):
    __tablename__ = "learner"
 
     id = Column(Integer, primary_key=True, index=True)
-    users_id = Column(Integer, ForeignKey("users.id"))
+    usersId = Column(Integer, ForeignKey("users.id"))
     
     users = relationship("users", back_populates="admin")
     
@@ -40,7 +40,7 @@ class Expert(Base):
    __tablename__ = "expert"
 
     id = Column(Integer, primary_key=True, index=True)
-    learner_id = Column(Integer, ForeignKey("learner.id"))
+    learnerId = Column(Integer, ForeignKey("learner.id"))
     
     leaner = relationship("learner", back_populates="expert")
 
@@ -55,18 +55,24 @@ class Lesson(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String(50), index=True)
-    syllabus_id = Column(Integer, ForeignKey("syllabus.id"))
+    syllabusId = Column(Integer, ForeignKey("syllabus.id"))
     
-    syllabuss = relationship("syllabus", back_populates="lesson")
+    syllabus = relationship("syllabus", back_populates="lesson")
     
 class Video(Base):
     __tablename__ = "video"
 
     id = Column(Integer, primary_key=True, index=True)
-    video_id = Column(String(50), index=True)
+    videoId = Column(String(50), index=True)
     title = Column(String(50), index=True)
+    viewCount = Column(Integer, index=True)
     description = Column(String(150), index=True)
-
+    publishedAt = Column(String(50), index=True)
+    thumbnails = Column(String(50), index=True)
+    channelId = Column(String(50), index=True)
+    lessonId = Column(Integer, ForeignKey("lesson.id"))
+    
+    lesson = relationship("lesson", back_populates="video")
     
 class Item(Base):
     __tablename__ = "items"
@@ -75,6 +81,6 @@ class Item(Base):
     videoid = Column(String, index=True)
     title = Column(String, index=True)
     description = Column(String, index=True)
-    owner_id = Column(Integer, ForeignKey("users.id"))
+    ownerId = Column(Integer, ForeignKey("users.id"))
 
     owner = relationship("User", back_populates="items")
