@@ -18,7 +18,7 @@ class Item(ItemBase):
 
     class Config:
         orm_mode = True
-        
+
 class AdminBase(BaseModel):
     pass
 class AdminCreate(AdminBase):

@@ -23,7 +23,7 @@ class Inscription(BaseModel):
     name : str
     email: str
     passord: str
-    genre: str
+    gender: str
     statut: str
     photo: Optional[str]
     tel: int
