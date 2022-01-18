@@ -19,8 +19,7 @@
           <label>Password</label>
         </div>
         <button class="btn-login">Se connecter</button>
-            <router-link to="/">ckki</router-link>
-
+            <router-link to="/">cc</router-link>
         <p class="login-txt test">Aucun compte ? 
         <a href="#">S'inscrire</a></p>
     </form>
@@ -31,16 +30,22 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
     created(){
-         this.test();
+              axios.get('http://localhost:3000/Register/' + 1)
+        .then(response =>{
+         this.tab = response.data
+         console.log(this.tab) 
+     }) 
+
     },
     data () {
       return {
         email:null,
         password:null,
-        testss: ''
+        taille: '',
+        tab:[]
       }
     },
     methods: {  
@@ -61,9 +66,11 @@ export default {
             small.innerText = message;
         },
     login(e){
-
+                     this.taille=this.tab.name
+         console.log(this.tab.length)
         if(this.email && this.password){
             alert('Connexion reussi')
+
         }        
         e.preventDefault()
     }

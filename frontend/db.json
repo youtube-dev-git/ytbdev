@@ -33,14 +33,47 @@
   ],
   "Register": [
     {
-      "id": 0,
+      "id": 1,
       "name": "Brecht",
+      "pseudo": "OTK",
+      "email": "brtankoua@gmail.com",
+      "phone": "651009128",
+      "img": "no_pic.jpg",
+      "sex": "M",
       "password": "susanoo"
     },
     {
+      "name": "xx",
+      "pseudo": "xx",
+      "email": "xx",
+      "phone": "xx",
+      "img": "no_pic.png",
+      "sex": "M",
+      "password": "x",
+      "statut": "Apprenant",
+      "id": 2
+    },
+    {
       "name": "brecht tankoua",
-      "password": "susan",
-      "id": 1
+      "pseudo": "susano",
+      "email": "brtankoua@gmail.com",
+      "phone": "693707668",
+      "img": "no_pic.png",
+      "sex": "M",
+      "password": "sss",
+      "statut": "Apprenant",
+      "id": 3
+    },
+    {
+      "name": "b",
+      "pseudo": "b",
+      "email": "b",
+      "phone": "b",
+      "img": "no_pic.png",
+      "sex": "M",
+      "password": "b",
+      "statut": "Apprenant",
+      "id": 4
     }
   ]
 }

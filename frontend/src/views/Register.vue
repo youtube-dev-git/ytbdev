@@ -12,7 +12,7 @@
       <img v-bind:src="require('../../src/assets/' + signUp_pic[pos].val)">
      </div>
     <div class="sign_container">
-      <form id="form" class="form" @submit.prevent="register">
+      <form id="form" class="form" @submit.prevent="click">
            <h2>S'inscrire</h2>
         <div class="contains">
             <div class="sign-control">
@@ -22,7 +22,7 @@
             </div>
             <div class="sign-control">
             <label for="pseudo">Pseudo</label>
-            <input type="text" id="pseudo" placeholder="Entrer votre Pseudo" />
+            <input type="text" id="pseudo" v-model="pseudo" placeholder="Entrer votre Pseudo" />
             <small>Error message</small>
             </div>
         </div>
@@ -34,20 +34,20 @@
             </div>
             <div class="sign-control">
             <label for="phone">Telephone</label>
-            <input type="text" id="phone" placeholder="Entrer votre numero" />
+            <input type="text" id="phone" v-model="phone" placeholder="Entrer votre numero" />
             <small>Error message</small>
             </div>
         </div>
          <div class="contains">
             <div class="sign-control">
                 <label for="files">Image file</label>
-                <input type="file" name="files" id="files">
+                <input type="file" name="files"  id="files">
                 <small>Error message</small>
             </div>
             <div class="sign-control">
                 <label for="sex">sex</label>
-                <select name="sex" id="sex">
-                    <option value="M">M</option>
+                <select name="sex" id="sex" v-model="sex">
+                    <option  value="M">M</option>
                     <option value="F">F</option>
                 </select>
             </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="sign-control">
           <label for="sign_password2">Confirm Password</label>
-          <input type="password" id="sign_password2" placeholder="Enter password again"/>
+          <input type="password" id="sign_password2" v-model="password2" placeholder="Enter password again"/>
           <small>Error message</small>
         </div>
         <button type="submit" @click="submit">Submit</button>
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import register from '@/classes/class_register.js';
 export default {
     created(){
         
@@ -80,9 +81,15 @@ export default {
           { val: "login_master.png" },
           { val: "login_admin.png" },
         ],
-        email:null,
+        pseudo:null,
         name:null,
+        email:null,
+        phone:null,
         password:null,
+        password2:null,
+        statut:'Apprenant',
+        img:'no_pic.png',
+        sex:null,
         pos:0
       }
     },
@@ -109,44 +116,44 @@ export default {
         signUp_color.style.backgroundColor='steelblue'
           this.test();
           this.pos=0;
+          this.statut='Apprenant';
       },
     tab_exp(){
         const signUp_color = document.getElementById("sign")
         signUp_color.style.backgroundColor='rgb(5, 55, 95)'
           this.test();
           this.pos=1;
+          this.statut='Expert';
       },
     tab_adm(){
         const signUp_color = document.getElementById("sign")
         signUp_color.style.backgroundColor='rgb(52, 52, 53)'
           this.test();
           this.pos=2;
+          this.statut='Admin';
     },
-    showError: function(input, message){
-            const formcontrol = input.parentElement;
-            formcontrol.className = 'form-control error'; 
-            const small = formcontrol.querySelector('small');
-            small.innerText = message;
-        },
-    register(){
-          this.$store.dispatch('register', {
-             name: this.name,
-             password: this.password
-         })
-        .then( () =>{
-         this.$router.push({name: 'Event_list'})
-         })
-        if(this.email && this.password){
-            console.log("connexion reussi");
+    click(){
+        this.$router.push({name: 'Home_user', params: {pseudo:this.pseudo }})
+        if(this.name && this.pseudo && this.email && this.phone && this.sex  && this.password==this.password2 ){
+            this.$store.dispatch('register', {
+                name: this.name,
+                pseudo: this.pseudo,
+                email: this.email,
+                phone: this.phone,
+                img: this.img,
+                sex: this.sex,
+                password: this.password,
+                statut: this.statut,
+            })
+            .then( () =>{
+              if(this.statut=='Apprenant'){
+                 this.$router.push({name: 'Home', params: {name:this.name }})
+              }
+              
+            })
+                console.log('connexion reussi')     
         }
-        if(!this.email){
-            
-        }
-        if(!this.password){
-            alert('hhjh')
-            document.getElementById("phone").style.borderColor ="red"
-        }
-
+      register.validate(this.name,this.pseudo,this.email,this.phone,this.sex,this.password,this.password2,this.statut)
     }
 },
 }
