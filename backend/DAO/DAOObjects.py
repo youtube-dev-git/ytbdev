@@ -6,11 +6,12 @@ class DAOObject:
         pass
     
     @classmethod
-    def save_syllabus(self, syllabus : Syllabus) -> None :
+    def save_syllabus(self, expert_id: int, syllabus : Syllabus) -> None :
+        # La fonction save_syllabus renvoie l'identifiant en BD du syllabus qui a été stocké
         pass
     
     @classmethod
-    def save_syllabus_videos(self, syllabus : Syllabus) -> None :
+    def save_syllabus_videos(self, syllabus : Syllabus) -> int :
         pass
     
     @classmethod

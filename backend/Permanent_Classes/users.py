@@ -16,10 +16,6 @@ class User(BaseModel):
     def register(self):
         pass
 
-class TypeUser(BaseModel):
-    status : str 
-    user : User
-
 class Admin(User):
     def __init__(__pydantic_self__, **data: Any) -> None:
         super().__init__(**data)

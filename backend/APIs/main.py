@@ -2,8 +2,9 @@ from typing import List
 from fastapi import FastAPI, HTTPException, status
 
 from ..Permanent_Classes.syllabus import Syllabus
-from ..Permanent_Classes.users import TypeUser, Admin, Learner, Expert
+from ..Permanent_Classes.users import Admin, Learner, Expert
 from ..DAO.DAOObjects import DAOObject
+from Types import TypeUser, TypeSyllabus
 
 app = FastAPI()
 db = DAOObject()
@@ -32,10 +33,15 @@ def index(email:str, password: str):
         
     return user
 
+@app.post("/syllabus")
+def listTrainings( query : TypeSyllabus):
+    id = db.save_syllabus(query["expert_id"], query["syllabus"])
+    # return db.list_trainings()
+
 @app.get("/syllabus")
 def listTrainings(syllabusList : List[Syllabus]):
-    return db.read_syllabus_videos()
+    return db.list_trainings()
 
 @app.get("/syllabus/{id}")
 def listTrainings(id, syllabusList : List[Syllabus]):
-    return db.read_syllabus_videos()
+    return db.list_expert_trainings(id)
