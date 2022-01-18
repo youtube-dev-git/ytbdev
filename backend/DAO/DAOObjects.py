@@ -1,5 +1,6 @@
-from ..videos_fetcher.classes.syllabus import Syllabus
-from ..APIs.users import User, Learner, Admin, Expert
+from typing import List
+from ..Permanent_Classes.syllabus import Syllabus
+from ..Permanent_Classes.users import User, Learner, Admin, Expert
 class DAOObject:
     def __init__(self) -> None:
         pass
@@ -17,20 +18,12 @@ class DAOObject:
         pass
     
     @classmethod
-    def read_syllabus_videos (self) -> Syllabus :
+    def list_trainings (self) -> List[Syllabus] :
         pass
     
-    # @classmethod
-    # def save_expert(e:Expert) -> None :
-    #     pass  
-      
-    # @classmethod
-    # def save_learner(e:Learner) -> None :
-    #     pass    
-    
-    # @classmethod
-    # def save_admin(e:Admin) -> None :
-    #     pass
+    @classmethod
+    def list_expert_trainings (self, expert_id) -> List[Syllabus] :
+        pass
     
     @classmethod
     def connect_user(mail : str, password: str) -> User :
@@ -39,18 +32,15 @@ class DAOObject:
 class DAOAdmin:
     
     def save(self, admin: Admin) -> Admin:
-        # Instructions
         pass
 
 class DAOLearner:
     
     def save(self, learner : Learner) -> Learner:
-        # Instructions
         pass
     
 class DAOExpert(DAOLearner):
     
     def save(self, expert : Expert) -> Expert:
         super().save()
-        # Autres instructions 
         pass
