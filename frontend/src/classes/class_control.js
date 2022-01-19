@@ -7,6 +7,14 @@ export default {
           }else{
             document.getElementById("name").style.borderColor ="#2ecc71"
           }
+<<<<<<< HEAD
+=======
+          if(!pseudo){
+            document.getElementById("pseudo").style.borderColor ="red"
+          }else{
+            document.getElementById("pseudo").style.borderColor ="#2ecc71"
+          }
+>>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
           if(!email){
             document.getElementById("mail").style.borderColor ="red"
           }else{
@@ -32,7 +40,11 @@ export default {
           }else{
             document.getElementById("sign_password2").style.borderColor ="#2ecc71"
           }
+<<<<<<< HEAD
           if(password != password2){
+=======
+          if(password !=password2){
+>>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
             document.getElementById("sign_password").style.borderColor ="red"
             document.getElementById("sign_password2").style.borderColor ="red"
           }else{

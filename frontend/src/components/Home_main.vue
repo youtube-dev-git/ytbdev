@@ -22,7 +22,11 @@
             <section id="tabpanel_1" class="tab-panel">
              <div class="sylab">
                <div v-for="sylab in html_filter" :key="sylab.id" class="sylab_info">
+<<<<<<< HEAD
                  <router-link :to="{name: 'Login' }" class="link">
+=======
+                 <router-link :to="{name: 'Home' }" class="link">
+>>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
                   <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                   <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
@@ -73,7 +77,11 @@
             </section>
         </div>
     </div>
+<<<<<<< HEAD
     <h1 class="sylab_txt">Tous nos Sylabus</h1>
+=======
+    <h1>Tous nos Sylabus</h1>
+>>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
     <div class="all_sylab">
        <div class="sylab_all">
                <div v-for="sylab in all" :key="sylab.id" class="sylab_info">
@@ -258,6 +266,7 @@ Tabs : debut
     display: flex;  
     overflow: hidden;
 }
+<<<<<<< HEAD
 .sylab_txt{
   font-size: 30px;
   color: #363434;
@@ -269,6 +278,8 @@ Tabs : debut
     padding-bottom: 7px;
     border-bottom: 3px solid orangered;
 }
+=======
+>>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
 .sylab_all{
 display: flex;
 flex-wrap: wrap;
@@ -326,7 +337,11 @@ width: 100%;
     font-size: 15px;
 }
 .home_ctg h1{
+<<<<<<< HEAD
   font-size: 25px;
+=======
+  font-size: 20px;
+>>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
 }
 .ctg_items{
     text-transform: capitalize;

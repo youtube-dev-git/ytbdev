@@ -33,6 +33,7 @@
   ],
   "Register": [
     {
+<<<<<<< HEAD
       "user": {
         "name": "Nkweo william",
         "email": "williamtankoua@gmail.com",
@@ -106,6 +107,49 @@
         ]
       },
       "id": "4J5QMed"
+=======
+      "id": 1,
+      "name": "Brecht",
+      "pseudo": "OTK",
+      "email": "brtankoua@gmail.com",
+      "phone": "651009128",
+      "img": "no_pic.jpg",
+      "sex": "M",
+      "password": "susanoo"
+    },
+    {
+      "name": "xx",
+      "pseudo": "xx",
+      "email": "xx",
+      "phone": "xx",
+      "img": "no_pic.png",
+      "sex": "M",
+      "password": "x",
+      "statut": "Apprenant",
+      "id": 2
+    },
+    {
+      "name": "brecht tankoua",
+      "pseudo": "susano",
+      "email": "brtankoua@gmail.com",
+      "phone": "693707668",
+      "img": "no_pic.png",
+      "sex": "M",
+      "password": "sss",
+      "statut": "Apprenant",
+      "id": 3
+    },
+    {
+      "name": "b",
+      "pseudo": "b",
+      "email": "b",
+      "phone": "b",
+      "img": "no_pic.png",
+      "sex": "M",
+      "password": "b",
+      "statut": "Apprenant",
+      "id": 4
+>>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
     }
   ]
 }

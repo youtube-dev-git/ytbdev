@@ -1,0 +1,20 @@
+{
+    "expert_id": 0,
+    "syllabus": {
+        "title": "HTML CSS pour les nuls",
+        "lessons": [
+            {
+                "title": "Qu'est-ce que le HTML ?",
+                "videos": []
+            },
+            {
+                "title": "Utiliser CSS3",
+                "videos": []
+            },
+            {
+                "title": "Installer un éditeur de texte",
+                "videos": []
+            }
+        ]
+    }
+}

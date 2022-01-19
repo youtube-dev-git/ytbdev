@@ -20,6 +20,15 @@
             <input type="text" id="name" v-model="name" placeholder="Entrer votre Nom" />
             <small>Error message</small>
             </div>
+<<<<<<< HEAD
+=======
+            <div class="sign-control">
+            <label for="pseudo">Pseudo</label>
+            <input type="text" id="pseudo" v-model="pseudo" placeholder="Entrer votre Pseudo" />
+            <small>Error message</small>
+            </div>
+        </div>
+>>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
         <div class="contains">
             <div class="sign-control">
             <label for="mail">Email</label>
@@ -75,6 +84,10 @@ export default {
           { val: "login_master.png" },
           { val: "login_admin.png" },
         ],
+<<<<<<< HEAD
+=======
+        pseudo:null,
+>>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
         name:null,
         email:null,
         phone:null,
@@ -126,6 +139,7 @@ export default {
           this.statut='Admin';
     },
     click(){
+<<<<<<< HEAD
         if(this.name && this.email && this.phone && this.sex  && this.password===this.password2 ){
             this.$store.dispatch('register', {
                  user:{
@@ -147,6 +161,29 @@ export default {
                 console.log('connexion reussi')     
         }
       register.validate(this.name,this.email,this.phone,this.sex,this.password,this.password2)
+=======
+        this.$router.push({name: 'Home_user', params: {pseudo:this.pseudo }})
+        if(this.name && this.pseudo && this.email && this.phone && this.sex  && this.password==this.password2 ){
+            this.$store.dispatch('register', {
+                name: this.name,
+                pseudo: this.pseudo,
+                email: this.email,
+                phone: this.phone,
+                img: this.img,
+                sex: this.sex,
+                password: this.password,
+                statut: this.statut,
+            })
+            .then( () =>{
+              if(this.statut=='Apprenant'){
+                 this.$router.push({name: 'Home', params: {name:this.name }})
+              }
+              
+            })
+                console.log('connexion reussi')     
+        }
+      register.validate(this.name,this.pseudo,this.email,this.phone,this.sex,this.password,this.password2,this.statut)
+>>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
     }
 },
 }
