@@ -22,7 +22,7 @@
             <section id="tabpanel_1" class="tab-panel">
              <div class="sylab">
                <div v-for="sylab in html_filter" :key="sylab.id" class="sylab_info">
-                 <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
+                 <router-link :to="{name: 'Home' }" class="link">
                   <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                   <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
@@ -45,7 +45,7 @@
             <section id="tabpanel_2" class="tab-panel">
               <div class="sylab">
                <div v-for="sylab in js_filter" :key="sylab.id" :sylab="sylab" class="sylab_info">
-                  <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
+                  <router-link :to="{name: 'Login' }" class="link">
                     <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                     <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
@@ -71,6 +71,30 @@
             <section id="tabpanel_4" class="tab-panel">
             <h2>6C. phpk</h2>
             </section>
+        </div>
+    </div>
+    <h1>Tous nos Sylabus</h1>
+    <div class="all_sylab">
+       <div class="sylab_all">
+               <div v-for="sylab in all" :key="sylab.id" class="sylab_info">
+                 <router-link :to="{name: 'Login'}" class="link">
+                  <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
+                  <div class="sylab_item">
+                    <h1>{{sylab.title}}</h1>
+                    <p>{{sylab.expert}} | <span>Voir info</span> </p>
+                    <div class="sylab_star">
+                      <i class="las la-star"></i>
+                      <i class="las la-star"></i>
+                      <i class="las la-star"></i>
+                      <i class="las la-star"></i>
+                      <i class="las la-star"></i>
+                    </div>
+                    <div class="sylab_link">
+                      <p>Frontend</p>
+                    </div>
+                  </div>
+                 </router-link>
+               </div>
         </div>
     </div>
     <div class="home_ctg">
@@ -119,6 +143,9 @@ export default {
         return this.sylabus.filter((sylab) => {
           return sylab.tags.toLowerCase().includes('html')
         })
+      },
+      all(){
+        return this.sylabus
       },
       js_filter(){
         return this.sylabus.filter((sylab) => {
@@ -212,8 +239,18 @@ Tabs : debut
 }
 /* Tabs : fin */
 .sylab{
-    display: flex;
-    
+    display: flex;  
+    overflow: hidden;
+}
+.sylab_all{
+display: flex;
+flex-wrap: wrap;
+overflow: hidden;
+padding-bottom: 25px;
+width: 100%;
+}
+.all_sylab{
+  padding-bottom: 35px;padding-top: 25px;
 }
 .sylab_info{
     position: relative;
@@ -227,7 +264,7 @@ Tabs : debut
     padding: 2px;
 }
 .sylab_info:hover{
-    transform: scale(1.1);
+    transform: scale(1.02);
     border: .3px solid rgb(117, 116, 116);
 }
 .sylab_info img{
@@ -259,7 +296,10 @@ Tabs : debut
     width: 100%;
     color: #363434;
     text-transform: uppercase;
-    font-size: 17px;
+    font-size: 15px;
+}
+.home_ctg h1{
+  font-size: 20px;
 }
 .ctg_items{
     text-transform: capitalize;
@@ -269,6 +309,7 @@ Tabs : debut
     overflow: hidden;
 }
 .ctg_item{
+  text-align: center;
     cursor: pointer;
     margin-right: 90px;margin-top: 35px;
 }
