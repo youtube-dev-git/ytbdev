@@ -18,7 +18,21 @@ export default createStore({
       .then(({data})=>{
           console.log('user data is:', data)
       })
-  }
+  },
+  login({commit}, credentials){
+    return axios
+    .post('http://localhost:3000/Login', credentials)
+    .then(({data})=>{
+        console.log('user data is:', data)
+    })
+},
+add_sylab({commit}, credentials){
+  return axios
+  .post('http://localhost:3000/Sylab', credentials)
+  .then(({data})=>{
+      console.log('user data is:', data)
+  })
+}
   },
   modules: {
   }

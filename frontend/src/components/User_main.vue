@@ -22,7 +22,7 @@
             <section id="tabpanel_1" class="tab-panel">
              <div class="sylab">
                <div v-for="sylab in html_filter" :key="sylab.id" class="sylab_info">
-                 <router-link :to="{name: 'Login' }" class="link">
+                 <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
                   <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                   <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
@@ -45,7 +45,7 @@
             <section id="tabpanel_2" class="tab-panel">
               <div class="sylab">
                <div v-for="sylab in js_filter" :key="sylab.id" :sylab="sylab" class="sylab_info">
-                  <router-link :to="{name: 'Login' }" class="link">
+                  <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
                     <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                     <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
@@ -73,11 +73,11 @@
             </section>
         </div>
     </div>
-    <h1 class="sylab_txt">Tous nos Sylabus</h1>
+    <h1>Tous nos Sylabus</h1>
     <div class="all_sylab">
        <div class="sylab_all">
                <div v-for="sylab in all" :key="sylab.id" class="sylab_info">
-                 <router-link :to="{name: 'Login'}" class="link">
+                 <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
                   <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                   <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
@@ -116,24 +116,8 @@
              <img src="@/assets/data_science.png" alt="">
              <p>Data Sciences</p>
             </div>
+            
         </div>
-    </div>
-    <div class="other">
-      <div class="other_transit">
-        <p>Des Videos gratuites de bonne qualité provenant de Youtube</p>
-        <i class="lab la-youtube"></i>
-      </div>
-      <div class="expert">
-        <div class="expert_logo">
-          <img src="@/assets/Programming-pana.png" alt="">
-        </div>
-        <div class="expert_txt">
-           <h1>Devenir formateur</h1>
-           <p>Nos formateurs du monde entier donnent des cours à des millions de participants sur Udemy.
-             Nous vous offrons les outils et les compétences nécessaires pour enseigner ce que vous aimez.</p>
-             <button>Devenir Expert</button>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -256,18 +240,6 @@ Tabs : debut
 /* Tabs : fin */
 .sylab{
     display: flex;  
-    overflow: hidden;
-}
-.sylab_txt{
-  font-size: 30px;
-  color: #363434;
-}
-.sylab_txt::after {
-    content: '';
-    display: block;
-    width: 11%;
-    padding-bottom: 7px;
-    border-bottom: 3px solid orangered;
 }
 .sylab_all{
 display: flex;
@@ -326,7 +298,7 @@ width: 100%;
     font-size: 15px;
 }
 .home_ctg h1{
-  font-size: 25px;
+  font-size: 20px;
 }
 .ctg_items{
     text-transform: capitalize;
@@ -345,54 +317,5 @@ width: 100%;
 }
 .ctg_item img{
     width: 200px;
-}
-.expert{
-  margin-top: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.expert_logo{
-  width: 350px;
-}
-.expert_txt{
-  width: 350px;
-  margin-left: 85px;
-}
-.expert_txt p{
-  font-size: 18px;
-  color: #363434;
-  line-height: 25px;
-}
-.expert_txt h1{
-  font-size: 30px;
-}
-.expert_txt button{
-  border: none;outline: none;
-  padding: 8px;
-  background-color: orangered;
-  color: white;
-  font-size: 17px;
-}
-.expert_logo img{
-  width: 100%;
-}
-.other_transit{
-  width: 100%;
-  color: rgb(44, 43, 43);
-  margin-top: 25px;
-  font-size: 17px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  background-color: #d3cdcd;
-}
-.other_transit p{
-  font-size: 23px;
-}
-.other_transit i{
-  font-size: 75px;
-  color: red;
 }
 </style>

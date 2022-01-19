@@ -13,22 +13,40 @@
                 </div>
                 <p>cree par : <span>Nom_expert</span> | <span>Frontend</span></p>
             </div>
-            <h1 class="txt_title">Contenu du Cours</h1>
-            <div class="course_main">
+            <h1 class="txt_title">Programme d'etudes</h1>
+            <section class="course_container">
                 <div class="course_items">
-                  <div class="item_course">
-                     <div class="video_course">
-                         <img src="@/assets/html_course_4.jpg" alt="">
-                     </div>
-                     <div class="video_info">
-                         <h1>Introduction HTML & CSS</h1>
-                         <p>Description</p>
-                         <p>Autre information</p>
-                     </div>
-                  </div>
+                   <div class="course_item">
+                       <div class="course_descrip">
+                          <div class="course_info">
+                             <h1>Introduction HTML & CSS</h1>
+                             <p>Description: <span>Dans ce chapitre nous apprendrons les bases de html (les balises,les classes)</span></p>
+                         </div>
+                      </div>
+
+                       <div class="sub_menu">
+                         <ul>
+                            <li><button class="list_btn">Afficher Videos</button>
+                            <ul class="lst_lecons">
+                                <li><p class="lecon_title">lecon_1 : HTML les bases</p> 
+                                <ul>
+                                    <li class="lecon_item">lecon1 : video_1</li>
+                                    <li class="lecon_item">lecon2 : video_2</li>
+                                </ul>
+                                </li>
+                                <li><p class="lecon_title">lecon_2 : CSS les bases</p> 
+                                <ul>
+                                    <li class="lecon_item">lecon1 : video_1</li>
+                                </ul> 
+                                </li>
+                            </ul>
+                            </li>
+                          </ul>
+                       </div>
+                   </div>
                 </div>
                 <div class="course_menu">
-                  <h1>Categories</h1>
+                    <h1>Categories</h1>
                   <div class="menu_items">
                      <div class="menu_item">
                          <p>Nom categorie </p>
@@ -36,7 +54,7 @@
                      </div>
                   </div>
                 </div>
-            </div>
+            </section>
         </div>
         <Footer></Footer>
     </div>
@@ -47,10 +65,28 @@ export default {
     props:['id'],
     components: {
     Footer
+  },
+  created(){
+    this.tests()
+  },
+  methods:{
+        tests: function(){
+            const lecons = document.querySelectorAll('list_btn')
+            const submenu = document.querySelectorAll('course_submenu')
+            lecons.forEach(tab => {
+            tab.addEventListener('click', () => {
+                lecons.forEach(tab => {
+                tab.classList.remove('active')
+                })
+                tab.classList.add('active')
+            })
+            })
+        }
   }  
 }
 </script>
 <style scoped>
+
 .course_header{
      padding: 5px;
     padding-left: 35px ;
@@ -70,58 +106,107 @@ export default {
     color: orangered;
     margin-left: 2px;
 }
-.course_main{
-padding-left: 35px ; 
-display: flex;
-justify-content: space-between;
-}
 .txt_title{
     margin-top: 35px;padding-left: 35px ; 
 }
+.txt_title::after {
+    content: '';
+    display: block;
+    width: 12%;
+    padding-bottom: 7px;
+    border-bottom: 3px solid orangered;
+}
+.course_container{
+    display: flex;
+    justify-content: space-between;
+}
 .course_items{
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    background-color: rgb(241, 237, 237);
-    margin-bottom: 35px;
-    border: white solid 2px;
-    height: 150px;
+   padding: 10px;
+   width: 55%;
+   color: white;
+   display: flex;
+   flex-direction: column;
 }
-.item_course{
-    display: flex;
-    align-items: center;
-    height: 150px;
+.course_item{
+    margin-left: 25px;
+    margin-bottom: 30px;
 }
-.video_course{
-width: 175px;
-height: 150px;
+.course_info{
+    padding: 10px;
+    background-color: rgb(65, 63, 63);
 }
-.video_course img{
-width: 175px;
-height: 150px;
-}
-.video_info{
-    margin-left: 40px;
-}
-.course_menu{
-    background-color: rgb(172, 169, 169);
-    height: 100vh;width: 20%;
-    margin-top: -90px;
-    color: rgb(46, 43, 43);
+.course_info p{
+    color: rgb(224, 219, 219);
     font-size: 18px;
+    line-height: 25px;
+    width: 70%;
 }
-.course_menu h1{
-    font-size: 25px;
-    margin-left: 15px;
-    color: rgb(75, 76, 77);
+.sub_menu{
+    margin-top: -13px;
 }
-.course_menu p{
+.sub_menu ul{
+    color: black;
+}
+.sub_menu ul li{
+    list-style: none;
+}
+.sub_menu ul ul{
+    display: none;
+}
+.sub_menu ul li:hover > ul{
+    display: block;
+}
+.sub_menu ul ul ul{
+    display: none;
+}
+.list_btn{
+    cursor: pointer;
+    background-color: rgb(65, 63, 63);
+    font-size: 16px;
+    color:white;
+    padding: 4.5px;
+    letter-spacing: .5px;
+    border: none;
+    outline: none;
+    margin-top: -2px;
+}
+.list_btn:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid rgb(34, 33, 33);
+}
+.lst_lecons{
+    background-color: white;
+    padding-bottom: 17px;
+}
+.lst_lecons li{
+    margin-bottom: 10px;padding-top: 7px;
+}
+.lecon_title{
+    font-size: 20px;
     cursor: pointer;
 }
-.course_menu :hover{
+.lecon_title:hover{
+    background-color: rgb(58, 56, 56);
     color: white;
-    font-size: 19px;
+    padding: 2px;
 }
+.lecon_item{
+    font-size: 19px;
+    color: rgb(89, 91, 94);
+    cursor: progress;
+    margin-bottom: 8px;
+}
+.course_menu{
+    background-color: rgb(41, 39, 39);
+    height: 100vh;width: 20%;
+    margin-top: -92px;
+    color: whitesmoke;
+    font-size: 18px;
+    padding-left: 15px;
+    width: 23%;
+}
+
 .menu_item{
     padding-left: 25px;padding-right: 25px;
     margin-bottom: 25px;

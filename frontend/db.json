@@ -33,14 +33,79 @@
   ],
   "Register": [
     {
-      "id": 0,
-      "name": "Brecht",
-      "password": "susanoo"
+      "user": {
+        "name": "Nkweo william",
+        "email": "williamtankoua@gmail.com",
+        "phone_num": "693707668",
+        "password": "aaa",
+        "gender": "M",
+        "photo": "no_pic.png"
+      },
+      "statut": "Apprenant",
+      "id": 1
+    }
+  ],
+  "Login": [
+    {
+      "id": "0",
+      "email": "williamtankoua@gmail.com",
+      "password": "aaa"
+    }
+  ],
+  "Sylab": [
+    {
+      "id": "0",
+      "expert_id": "martins",
+      "sylabus": {
+        "title": "HTML pour les nuls",
+        "lessons": [
+          {
+            "title": "Qu'est ce que html",
+            "video": [
+              {
+                "link": "aaaa"
+              }
+            ]
+          },
+          {
+            "title": "Qu'est ce que css",
+            "video": [
+              {
+                "link": "bbbb"
+              }
+            ]
+          }
+        ]
+      },
+      "lecon": {
+        "title": "Nkweo william",
+        "video": {}
+      }
     },
     {
-      "name": "brecht tankoua",
-      "password": "susan",
-      "id": 1
+      "expert_id": "martins",
+      "sylabus": {
+        "title": "css pour les nul",
+        "lessons": [
+          {
+            "title": "c est quoi css",
+            "videos": [
+              {
+                "link": "aaaaa.ytb"
+              }
+            ]
+          },
+          {
+            "title": "c est quoi les classes css",
+            "videos": [
+              {
+                "link": "bbbb.ytb"
+              }
+            ]
+          }
+        ]
+      },
+      "id": "4J5QMed"
     }
   ]
 }
