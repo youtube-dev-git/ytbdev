@@ -1,6 +1,7 @@
 from typing import List
 from Permanent_Classes.syllabus import Syllabus
 from Permanent_Classes.users import User, Learner, Admin, Expert
+# from .Permanent_Classes import users
 
 
 class DAOObject:
@@ -46,18 +47,21 @@ class DAOObject:
     
 class DAOAdmin:
     
+    @classmethod
     def save(self, admin: Admin) -> Admin:
         # Cette fonction enregistre un administrateur en base de données
         ...
 
 class DAOLearner:
     
+    @classmethod
     def save(self, learner : Learner) -> Learner:
         # Cette fonction enregistre un aprennant en base de données
         ...
     
 class DAOExpert(DAOLearner):
     
+    @classmethod
     def save(self, expert : Expert) -> Expert:
         # Cette fonction enregistre un expert en base de données
         ...
