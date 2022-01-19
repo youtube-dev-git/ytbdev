@@ -13,12 +13,17 @@ app = FastAPI()
 @app.post("/register", status_code = status.HTTP_201_CREATED)
 def index(query : TypeUser):
     user = None
+    
     if(query.status == "admin"):
-        user = Admin(**query.user)
+        user = Admin(**vars(query.user))
     elif(query.status == "learner"):
-        user = Learner(**query.user)
+        user = Learner(**vars(query.user))
     elif(query.status == "expert"):
-        user = Expert(**query.user)
+        user = Expert(**vars(query.user))
+    else:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, 
+                            detail= "Invalid status")
+        
     new_user = user.register()
     if not new_user :
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, 

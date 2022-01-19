@@ -1,5 +1,5 @@
-from ..Permanent_Classes.syllabus import Syllabus
-from ..Permanent_Classes.lesson import Lesson
+from Permanent_Classes.syllabus import Syllabus
+from Permanent_Classes.lesson import Lesson
 from googleapiclient.discovery import build
 
 class YoutubeAPIHandler :
@@ -10,12 +10,16 @@ class YoutubeAPIHandler :
     def __init__(self) -> None:
         pass
     
-    def fetch_by_query(self, syllabus : Syllabus) -> Syllabus:
+    @classmethod
+    def fetch_by_query(self, syllabus : Syllabus):
         for lesson in syllabus.lessons:
             videos = self.__search_by_query(lesson.title)
             lesson.appendVideos(videos)
+        
      
+    @classmethod
     def __search_by_query(self, query : str) -> dict:
+        # return {}
         youtube = build(self.API_NAME, self.API_VERSION, developerKey=self.API_KEY)
         request = youtube.search().list(
             part='statistics,snippet',
