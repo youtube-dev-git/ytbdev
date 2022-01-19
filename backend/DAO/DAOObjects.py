@@ -19,33 +19,45 @@ class DAOObject:
         pass
     
     @classmethod
-    def read_syllabus(self) -> Syllabus :
+    def read_syllabus(self, id: int) -> Syllabus :
+        # Cette fonction retourne le syllabus dont l'identifiant est id
         pass
     
     @classmethod
     def list_trainings (self) -> List[Syllabus] :
+        # Cette fonction liste toutes les formations (syllabus accompagnés de leurs vidéos) 
+        # présentes dans la base de données
         pass
     
     @classmethod
-    def list_expert_trainings (self, expert_id) -> List[Syllabus] :
+    def list_expert_trainings (self, expert_id : int) -> List[Syllabus] :
+        # Cette fonction liste toutes les formations postées par l'expert dont l'id est donné en paramètre
         pass
     
     @classmethod
-    def connect_user(mail : str, password: str) -> User :
+    def connect_user(self, mail : str, password: str) -> User :
+        # Cette fonction vérifie si le mail et le password passé en paramètre
+        # correspondent à un utilisateur enregistré dans l'une des tables admin, expert ou apprenant 
+        # Si l'utilisateur est retrouvé dans l'une de ces tables, un objet du type correspondant 
+        # est retourné
+        
+        # NB: La vérification doit se faire dans l'ordre admin, puis expert, puis apprenant
         pass
     
 class DAOAdmin:
     
     def save(self, admin: Admin) -> Admin:
+        # Cette fonction enregistre un administrateur en base de données
         pass
 
 class DAOLearner:
     
     def save(self, learner : Learner) -> Learner:
+        # Cette fonction enregistre un aprennant en base de données
         pass
     
 class DAOExpert(DAOLearner):
     
     def save(self, expert : Expert) -> Expert:
-        super().save()
+        # Cette fonction enregistre un expert en base de données
         pass
