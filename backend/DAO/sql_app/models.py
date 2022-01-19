@@ -17,6 +17,7 @@ class User(Base):
     
     hashed_password = Column(String(50))
     is_active = Column(Boolean, default=True)
+    
 
    # items = relationship("Item", back_populates="owner")
 
@@ -34,7 +35,7 @@ class Learner(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     
-    users = relationship("users", back_populates="admin")
+    users = relationship("users", back_populates="Learner")
     
 class Expert(Base):
     __tablename__ = "expert"

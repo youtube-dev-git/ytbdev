@@ -77,13 +77,6 @@ class Lesson(LessonBase):
     class Config:
         orm_mode = True
 
-class UserBase(BaseModel):
-    email: str
-    name: str
-    photo: str
-    gender: str
-    phone: str
-
 class SyllabusBase(BaseModel):
     title: str
 class SyllabusCreate(SyllabusBase):
@@ -93,7 +86,13 @@ class Syllabus(SyllabusBase):
     lessons: List[Lesson] = []
     class Config:
         orm_mode = True
-
+class UserBase(BaseModel):
+    email: str
+    name: str
+    photo: str
+    gender: str
+    phone: str
+    
 class UserCreate(UserBase):
     password : str
 
