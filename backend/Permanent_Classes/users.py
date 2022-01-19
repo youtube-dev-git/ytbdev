@@ -1,8 +1,11 @@
-from typing import Any, Optional
+from lib2to3.pgen2.token import OP
+from typing import Any, List, Optional
 from pydantic import BaseModel
-from ..DAO.DAOObjects import *
+from DAO.DAOObjects import DAOObject, DAOLearner, DAOExpert, DAOAdmin
+from backend.Permanent_Classes.syllabus import Syllabus
 
 class User(BaseModel):
+    id: Optional[int]
     name : str
     email: str
     phone_num : int
@@ -36,4 +39,9 @@ class Expert(Learner):
     
     def register(self):
         return DAOExpert().save(self)
+    
+    @property
+    def my_trainings(self) -> List[Syllabus]:
+        return DAOObject.list_expert_trainings(self.id)
+        # pass
 

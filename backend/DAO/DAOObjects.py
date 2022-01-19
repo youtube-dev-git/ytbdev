@@ -5,59 +5,59 @@ from Permanent_Classes.users import User, Learner, Admin, Expert
 
 class DAOObject:
     def __init__(self) -> None:
-        pass
+        ...
     
     @classmethod
     def save_syllabus(self,expert_id: int,syllabus : Syllabus) -> int :
         # Cette fonction renvoie l'identifiant en BD du syllabus qui a été stocké
-        pass
+        ...
     
     @classmethod
     def save_syllabus_videos(self, syllabus : Syllabus, syllabus_id: int) -> None :
         # Cette fonction prend en paramètre un syllabus muni de ses vidéos et actualise
         # de fait le syllabus d'id syllabus_id
-        pass
+        ...
     
     @classmethod
-    def read_syllabus(self, id: int) -> Syllabus :
-        # Cette fonction retourne le syllabus dont l'identifiant est id
-        pass
+    def read_syllabus(self, syllabus_id: int) -> Syllabus :
+        # Cette fonction retourne le syllabus dont l'identifiant est passé en paramètre (id)
+        ...
     
     @classmethod
     def list_trainings (self) -> List[Syllabus] :
         # Cette fonction liste toutes les formations (syllabus accompagnés de leurs vidéos) 
         # présentes dans la base de données
-        pass
+        ...
     
     @classmethod
     def list_expert_trainings (self, expert_id : int) -> List[Syllabus] :
         # Cette fonction liste toutes les formations postées par l'expert dont l'id est donné en paramètre
-        pass
+        ...
     
     @classmethod
     def connect_user(self, mail : str, password: str) -> User :
         # Cette fonction vérifie si le mail et le password passé en paramètre
         # correspondent à un utilisateur enregistré dans l'une des tables admin, expert ou apprenant 
         # Si l'utilisateur est retrouvé dans l'une de ces tables, un objet du type correspondant 
-        # est retourné
+        # est retourné avec son identifiant de base de données
         
-        # NB: La vérification doit se faire dans l'ordre admin, puis expert, puis apprenant
-        pass
+        # NB: La vérification doit se faire dans l'ordre : admin, puis expert, puis apprenant
+        ...
     
 class DAOAdmin:
     
     def save(self, admin: Admin) -> Admin:
         # Cette fonction enregistre un administrateur en base de données
-        pass
+        ...
 
 class DAOLearner:
     
     def save(self, learner : Learner) -> Learner:
         # Cette fonction enregistre un aprennant en base de données
-        pass
+        ...
     
 class DAOExpert(DAOLearner):
     
     def save(self, expert : Expert) -> Expert:
         # Cette fonction enregistre un expert en base de données
-        pass
+        ...

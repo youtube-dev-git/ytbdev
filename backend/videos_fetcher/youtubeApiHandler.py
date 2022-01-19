@@ -10,11 +10,10 @@ class YoutubeAPIHandler :
     def __init__(self) -> None:
         pass
     
-    def fetch_by_query(self, syllabus : Syllabus) -> dict:
+    def fetch_by_query(self, syllabus : Syllabus) -> Syllabus:
         for lesson in syllabus.lessons:
-            videos = self.__search_by_query(syllabus.title + " " + lesson.title)
+            videos = self.__search_by_query(lesson.title)
             lesson.appendVideos(videos)
-            
      
     def __search_by_query(self, query : str) -> dict:
         youtube = build(self.API_NAME, self.API_VERSION, developerKey=self.API_KEY)
