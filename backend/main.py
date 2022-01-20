@@ -49,6 +49,12 @@ def index(request: TypeLogin):
                             detail= "User not found")
     return user
 
+@app.get("/login", status_code=status.HTTP_200_OK)
+def index():
+    return {
+        "data" : "get worked"
+    }
+
 @app.post("/syllabus")
 def saveTraining(query : TypeSyllabus):
     System.save_syllabus(query.expert_id, query.syllabus)
