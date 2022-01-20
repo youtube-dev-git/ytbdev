@@ -3,62 +3,59 @@ from sqlalchemy.orm import Session
 from . import models, schemas
 
 
-def get_user(db: Session, user_id: int):
-    return db.query(models.User).filter(models.User.id == user_id).first()
-
-
-def get_user_by_email(db: Session, email: str):
-    return db.query(models.User).filter(models.User.email == email).first()
-
-def get_users(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.User).offset(skip).limit(limit).all()
-
-def get_admin(db: Session, user_id: int):
-    return db.query(models.User,models.Admin).filter(models.User.id == models.Admin.user_id).first()
+def get_admin(db: Session, admin_id: int):
+    return db.query(models.Admin).filter(models.Admin.id == admin_id).first()
 
 
 def get_admin_by_email(db: Session, email: str):
-    return db.query(models.User,models.Admin).filter((models.User.email == email & models.User.id) == models.Admin.user_id).first()
+    return db.query(models.Admin).filter(models.Admin.email == email).first()
 
 def get_admins(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.User,models.Admin).filter(models.User.id == models.Admin.user_id).offset(skip).limit(limit).all()
-
-def get_learner(db: Session):
-    return db.query(models.User,models.Learner).filter(models.User.id == models.Learner.user_id).first()
+    return db.query(models.Admin).offset(skip).limit(limit).all()
 
 
-def get_learner_by_email(db: Session, email: str):
-    return db.query(models.User,models.Learner).filter((models.User.email == email & models.User.id) == models.Learner.user_id).first()
+def create_admin(db: Session, admin: schemas.AdminCreate):
+    fake_hashed_password = admin.password + "notreallyhashed"
+    db_admin = models.Admin(email=admin.email, hashed_password=fake_hashed_password, name =admin.name, photo=admin.photo, phone=admin.phone,gender=admin.gender,statut=admin.statut)
+    db.add(db_admin)
+    db.commit()
+    db.refresh(db_admin)
+    return db_admin
 
-def get_learners(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.User,models.Learner).filter(models.User.id == models.Learner.user_id).offset(skip).limit(limit).all()
-
-def get_expert(db: Session):
-    return db.query(models.User,models.Learner,models.Expert).filter((models.User.id == models.Learner.user_id)==models.Expert.learner_id).first()
+def get_expert(db: Session, expert_id: int):
+    return db.query(models.Expert).filter(models.Expert.id == expert_id).first()
 
 
 def get_expert_by_email(db: Session, email: str):
-    return db.query(models.User,models.Expert,models.Expert).filter((models.User.email == email & models.User.id == models.Learner.user_id)==models.Expert.learner_id).first()
+    return db.query(models.Expert).filter(models.Expert.email == email).first()
 
 def get_experts(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.User,models.Expert).filter((models.User.id == models.Learner.user_id)==models.Expert.learner_id).offset(skip).limit(limit).all()
+    return db.query(models.Expert).offset(skip).limit(limit).all()
 
-def create_user(db: Session, user: schemas.UserCreate):
-    fake_hashed_password = user.password + "notreallyhashed"
-    db_user = models.User(email=user.email, hashed_password=fake_hashed_password, phone=user.phone, photo=user.photo,gender=user.gender,name=user,status=user.status)
-    db.add(db_user)
+
+def create_expert(db: Session, expert: schemas.ExpertCreate):
+    fake_hashed_password = expert.password + "notreallyhashed"
+    db_expert = models.Expert(email=expert.email, hashed_password=fake_hashed_password, name =expert.name, photo=expert.photo, phone=expert.phone,gender=expert.gender,statut=expert.statut)
+    db.add(db_expert)
     db.commit()
-    db.refresh(db_user)
-    return db_user
+    db.refresh(db_expert)
+    return db_expert
+
+def get_learner(db: Session, learner_id: int):
+    return db.query(models.Learner).filter(models.Learner.id == learner_id).first()
 
 
-def get_items(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Item).offset(skip).limit(limit).all()
+def get_learner_by_email(db: Session, email: str):
+    return db.query(models.Learner).filter(models.Learner.email == email).first()
+
+def get_learners(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Learner).offset(skip).limit(limit).all()
 
 
-def create_user_item(db: Session, item: schemas.ItemCreate):
-    db_item = models.Item(**item.dict(), owner_id=user_id)
-    db.add(db_item)
+def create_learner(db: Session, learner: schemas.LearnerCreate):
+    fake_hashed_password = learner.password + "notreallyhashed"
+    db_learner = models.Learner(email=learner.email, hashed_password=fake_hashed_password, name =learner.name, photo=learner.photo, phone=learner.phone,gender=learner.gender,statut=learner.statut)
+    db.add(db_learner)
     db.commit()
-    db.refresh(db_item)
-    return db_item
+    db.refresh(db_learner)
+    return db_learner

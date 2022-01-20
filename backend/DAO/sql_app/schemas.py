@@ -2,24 +2,6 @@ from os import stat
 from typing import List, Optional
 from pydantic import BaseModel
 
-class UserBase(BaseModel):
-    email: str
-    name: str
-    photo: str
-    gender: str
-    phone: str
-    
-class UserCreate(UserBase):
-    password : str
-
-class User(UserBase):
-    id: int
-    is_active: bool
-    #admin: List[Admin] = []
-    #learners: List[Learner] = []
-    
-    class Config:
-        orm_mode = True
 
 class AdminBase(BaseModel):
     email: str

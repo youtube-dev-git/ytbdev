@@ -1,6 +1,8 @@
 from typing import List
 from Permanent_Classes.syllabus import Syllabus
 from Permanent_Classes.users import User, Learner, Admin, Expert
+
+from sql_app.main import DAOObjects
 # from .Permanent_Classes import users
 
 
