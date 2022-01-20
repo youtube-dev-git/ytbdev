@@ -20,7 +20,7 @@ export default {
         this.password=password,
         this.password2=password2,
 
-       console.log(this.names,this.email,this.phone,this.sex,this.password,this.password2)
+      //  console.log(this.names,this.email,this.phone,this.sex,this.password,this.password2)
        control.verification(this.names,this.email,this.phone,this.sex,this.password,this.password2)
     },
   

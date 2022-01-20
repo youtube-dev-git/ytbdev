@@ -9,7 +9,7 @@ class User(BaseModel):
     id: Optional[int]
     name : str
     email: str
-    phone_num : int
+    phone_num : str
     password: str
     gender: str
     photo: Optional[str]

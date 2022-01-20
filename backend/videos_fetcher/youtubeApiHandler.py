@@ -1,6 +1,11 @@
 # from Permanent_Classes.lesson import Lesson
 from googleapiclient.discovery import build
 
+# import os
+
+# import google_auth_oauthlib.flow
+# import googleapiclient.discovery
+# import googleapiclient.errors
 
 class YoutubeAPIHandler :
     API_NAME = "youtube"
@@ -8,6 +13,16 @@ class YoutubeAPIHandler :
     API_KEY = "AIzaSyCczWd9sOMfJOKEcbYhneIS_UzrY4dOGuo"
     youtube = build(API_NAME, API_VERSION, developerKey=API_KEY)
     
+    # scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
+    # api_service_name = "youtube"
+    # api_version = "v3"
+    # client_secrets_file = "code_secret_client_581014431912-9f5dn2495d01m9ir7c4d05mic3eceqnb.apps.googleusercontent.com.json"
+    # flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
+    #     client_secrets_file, scopes)
+    # credentials = flow.run_console()
+    # youtube = googleapiclient.discovery.build(
+    #     api_service_name, api_version, credentials=credentials)
+
     def __init__(self) -> None:
         pass
     
@@ -22,15 +37,11 @@ class YoutubeAPIHandler :
     @classmethod
     def __search_by_query(self, query : str) -> dict:
         request = self.youtube.search().list(
-            # part='statistics,snippet',
             part='snippet',
             maxResults = 25,
-            q = query,
-            fields = "items(id,snippet(channelId, title,description,publishedAt,thumbnails/medium/url))"
-            # fields = "items(id,snippet(channelId, title,description,publishedAt,thumbnails/medium/url), statistics(viewCount))"
+            q = query
         )
         response = request.execute()
-        # print(response)
         return response
     
     @classmethod
@@ -42,3 +53,16 @@ class YoutubeAPIHandler :
         )
         response = request.execute()
         return int(response["items"]["statistics"]["viewCount"])
+    
+    @classmethod
+    def _format_query(self, video : dict) -> dict:
+        print(video)
+        return {
+            "video_id" : video["id"]["videoId"],
+            "title" : video["snippet"]["title"],
+            "viewCount" : YoutubeAPIHandler._get_view_count(video["items"][0]["id"]),
+            "description" : video["snippet"]["description"],
+            "published_at" : video["snippet"]["publishedAt"],
+            "thumbnails_medium" : video["snippet"]["thumbnails"]["medium"]["url"],
+            "channel_id" : video["snippet"]["channelId"],
+        }

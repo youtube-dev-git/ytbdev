@@ -84,10 +84,10 @@
         "title": "HTML pour les nuls",
         "lessons": [
           {
-            "title": "Qu'est ce que html",
+            "title": "Qu'est ce que le HTML",
             "video": [
               {
-                "link": "aaaa"
+                "link": "2r6zeeGIfoI"
               }
             ]
           },
@@ -95,15 +95,11 @@
             "title": "Qu'est ce que css",
             "video": [
               {
-                "link": "bbbb"
+                "link": "QI8NMJy2L1k"
               }
             ]
           }
         ]
-      },
-      "lecon": {
-        "title": "Nkweo william",
-        "video": {}
       }
     },
     {
@@ -112,7 +108,7 @@
         "title": "css pour les nul",
         "lessons": [
           {
-            "title": "c est quoi css",
+            "title": "Balises HTML ",
             "videos": [
               {
                 "link": "aaaaa.ytb"
