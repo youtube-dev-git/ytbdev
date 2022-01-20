@@ -14,9 +14,11 @@ class User(Base):
     photo = Column(String(50))
     gender = Column(String(1))
     phone = Column(String(15))
+    status = Column(Integer,index=True)
     
     hashed_password = Column(String(50))
     is_active = Column(Boolean, default=True)
+    
 
    # items = relationship("Item", back_populates="owner")
 
@@ -34,7 +36,7 @@ class Learner(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     
-    users = relationship("users", back_populates="admin")
+    users = relationship("users", back_populates="Learner")
     
 class Expert(Base):
     __tablename__ = "expert"
@@ -63,7 +65,6 @@ class Video(Base):
     __tablename__ = "video"
 
     id = Column(Integer, primary_key=True, index=True)
-    video_id = Column(String(50), index=True)
     title = Column(String(50), index=True)
     viewCount = Column(Integer, index=True)
     description = Column(String(150), index=True)

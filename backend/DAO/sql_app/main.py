@@ -1,84 +1,85 @@
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
 
-from fastapi import FastAPI, status
+from . import crud, models, schemas
+from .database import SessionLocal, engine
 
-from pydantic import BaseModel
-
-from typing import List, Optional
-
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-
-# Create a sqlite engine instance
-engine = create_engine("sqlite:///ydev.db")
-
-# Create a DeclarativeMeta instance
-Base = declarative_base()
-
-# Create the database
-Base.metadata.create_all(engine)
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-n
-class Inscription(BaseModel):
-    name : str
-    email: str
-    passord: str
-    genre: str
-    statut: str
-    photo: Optional[str]
-    tel: int
-class Admin(BaseModel):
-    id_Admin:int
-    name : str
-    email: str
-    passord: str
-    genre: str
-    photo: Optional[str]
-    tel: int
-    id_Learner:int
-    id_Expert:int
-class leaner(BaseModel):
-    id_Learner:int
-    name : str
-    email: str
-    passord: str
-    genre: str
-    photo: Optional[str]
-    tel: int
-    id_Admin:int
-    id_Expert:int
 
-class Expert(BaseModel):
-    id_Expert:int
-    name : str
-    email: str
-    passord: str
-    genre: str
-    photo: Optional[str]
-    tel: int
-    id_Admin:int
-    id_Learner:int
 
-@app.get("/")
-def root():
-    return "subscription"
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+# get user
 
-@app.post("/subscription ", status_code=status.HTTP_201_CREATED)
-def create_subscription(inscription: Inscription ):
-    return "create subscription "
+@app.post("/users/", response_model=schemas.User)
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    db_user = crud.get_user_by_email(db, email=user.email)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return crud.create_user(db=db, user=user)
 
-@app.get("/subscription/{id}")
-def read_subscription(id: int):
-    return "read subscription  with id {id}"
 
-@app.put("/subscription/{id}")
-def update_subscription(id: int):
-    return "update subscription  with id {id}"
+@app.get("/users/", response_model=list[schemas.User])
+def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    users = crud.get_users(db, skip=skip, limit=limit)
+    return users
 
-@app.delete("/subscription/{id}")
-def delete_subscription(id: int):
-    return "delete subscription  with id {id}"
 
-@app.get("/subscription")
-def read_subscription_list():
-    return "read subscription list"
+@app.get("/users/{user_id}", response_model=schemas.User)
+def read_user(user_id: int, db: Session = Depends(get_db)):
+    db_user = crud.get_user(db, user_id=user_id)
+    if db_user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return db_user
+
+#get admin
+
+@app.post("/admins/", response_model=schemas.User)
+
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    db_user = crud.get_user_by_email(db, email=user.email)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return crud.create_user(db=db, user=user)
+
+
+def create_admin(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
+    db_admin = crud.get_admin_by_email(db, email=admin.users.email)
+    if db_admin:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return crud.create_admin(db=db, admin=admin)
+
+
+@app.get("/admins/", response_model=list[schemas.User])
+def read_admins(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    admins = crud.get_admins(db, skip=skip, limit=limit)
+    return admins
+
+
+@app.get("/admins/{admin_id}", response_model=schemas.User)
+def read_admin(admin_id: int, db: Session = Depends(get_db)):
+    db_admin = crud.get_admin(db, admin_id=admin_id)
+    if db_admin is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return db_admin
+
+
+
+@app.post("/admins/{admin_id}/items/", response_model=schemas.Item)
+def create_item_for_admin(
+    admin_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
+):
+    return crud.create_admin_item(db=db, item=item, admin_id=admin_id)
+
+
+@app.get("/items/", response_model=list[schemas.Item])
+def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    items = crud.get_items(db, skip=skip, limit=limit)
+    return items

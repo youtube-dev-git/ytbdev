@@ -23,7 +23,7 @@ def get_admin_by_email(db: Session, email: str):
 def get_admins(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.User,models.Admin).filter(models.User.id == models.Admin.user_id).offset(skip).limit(limit).all()
 
-def get_learner(db: Session, user_id: int):
+def get_learner(db: Session):
     return db.query(models.User,models.Learner).filter(models.User.id == models.Learner.user_id).first()
 
 
@@ -33,7 +33,7 @@ def get_learner_by_email(db: Session, email: str):
 def get_learners(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.User,models.Learner).filter(models.User.id == models.Learner.user_id).offset(skip).limit(limit).all()
 
-def get_expert(db: Session, user_id: int):
+def get_expert(db: Session):
     return db.query(models.User,models.Learner,models.Expert).filter((models.User.id == models.Learner.user_id)==models.Expert.learner_id).first()
 
 
@@ -45,7 +45,7 @@ def get_experts(db: Session, skip: int = 0, limit: int = 100):
 
 def create_user(db: Session, user: schemas.UserCreate):
     fake_hashed_password = user.password + "notreallyhashed"
-    db_user = models.User(email=user.email, hashed_password=fake_hashed_password)
+    db_user = models.User(email=user.email, hashed_password=fake_hashed_password, phone=user.phone, photo=user.photo,gender=user.gender,name=user,status=user.status)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
@@ -56,7 +56,7 @@ def get_items(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Item).offset(skip).limit(limit).all()
 
 
-def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
+def create_user_item(db: Session, item: schemas.ItemCreate):
     db_item = models.Item(**item.dict(), owner_id=user_id)
     db.add(db_item)
     db.commit()

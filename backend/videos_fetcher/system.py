@@ -1,8 +1,6 @@
-import imp
-from youtubeApiHandler import YoutubeAPIHandler
-# from syllabusGraphDBHandler import SyllabusGraphDBHandler
-from ..DAO.DAOObjects import DAOObject
-from ..Permanent_Classes.syllabus import Syllabus
+from .youtubeApiHandler import YoutubeAPIHandler
+from DAO.DAOObjects import DAOObject
+from Permanent_Classes.syllabus import Syllabus
 
 
 class System:
@@ -10,14 +8,15 @@ class System:
         pass    
     
     @classmethod
-    def save_syllabus(self, syllabus : Syllabus):
-        DAOObject.save_syllabus(syllabus)
+    def save_syllabus(self,expert_id: int, syllabus : Syllabus):
+        syllabus_db_id = DAOObject.save_syllabus(expert_id, syllabus)
         System.videos_syllabus_matching(syllabus)
+        DAOObject.save_syllabus_videos(syllabus, syllabus_db_id)
+        
         
     @classmethod
-    def videos_syllabus_matching(self, syllabus : Syllabus):
-        syllabus_videos_list = YoutubeAPIHandler.fetch_by_query(syllabus)
-        DAOObject.save_syllabus_videos(syllabus_videos_list)
+    def videos_syllabus_matching(self, syllabus : Syllabus) :
+        YoutubeAPIHandler.fetch_by_query(syllabus)
         
     @classmethod
     def all_syllabus_matching(self):

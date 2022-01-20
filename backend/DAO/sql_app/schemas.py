@@ -1,3 +1,4 @@
+from os import stat
 from typing import List, Optional
 
 from pydantic import BaseModel
@@ -77,13 +78,6 @@ class Lesson(LessonBase):
     class Config:
         orm_mode = True
 
-class UserBase(BaseModel):
-    email: str
-    name: str
-    photo: str
-    gender: str
-    phone: str
-
 class SyllabusBase(BaseModel):
     title: str
 class SyllabusCreate(SyllabusBase):
@@ -93,7 +87,14 @@ class Syllabus(SyllabusBase):
     lessons: List[Lesson] = []
     class Config:
         orm_mode = True
-
+class UserBase(BaseModel):
+    email: str
+    name: str
+    photo: str
+    gender: str
+    phone: str
+    status = int
+    
 class UserCreate(UserBase):
     password : str
 
@@ -107,26 +108,3 @@ class User(UserBase):
         orm_mode = True
 
 
-class Item(ItemBase):
-    id: int
-    owner_id: int
-
-    class Config:
-        orm_mode = True
-
-
-class UserBase(BaseModel):
-    email: str
-
-
-class UserCreate(UserBase):
-    password: str
-
-
-class User(UserBase):
-    id: int
-    is_active: bool
-    items: List[Item] = []
-
-    class Config:
-        orm_mode = True
