@@ -1,6 +1,6 @@
 
 from typing import List
-from winreg import QueryReflectionKey
+# from winreg import QueryReflectionKey
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -28,17 +28,13 @@ from Types import TypeUser, TypeSyllabus, TypeLogin
 from videos_fetcher.system import System
 
 
+@app.get("/")
+def index():
+    return { "data" : "Hello World"}
+
 @app.post("/register", status_code = status.HTTP_201_CREATED)
 def index(query : TypeUser):
     user = None
-    # return Admin(
-    #     name="jfdk",
-    #     email="jfdk",
-    #     phone_num="jfdk",
-    #     password="jfdk",
-    #     gender="jfdk",
-    # )
-    # return query.user
     if(query.status == "admin"):
         user = Admin(**vars(query.user))
     elif(query.status == "learner"):

@@ -1,0 +1,4 @@
+fastAPI
+uvicorn
+sqlAlchemy
+google-api-python-client
