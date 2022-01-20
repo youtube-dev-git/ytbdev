@@ -109,7 +109,6 @@ export default {
 .txt_title{
     margin-top: 35px;padding-left: 35px ; 
 }
-<<<<<<< HEAD
 .txt_title::after {
     content: '';
     display: block;
@@ -157,48 +156,6 @@ export default {
 .sub_menu ul li:hover > ul{
     display: block;
 }
-=======
-.course_container{
-    display: flex;
-    justify-content: space-between;
-}
-.course_items{
-   padding: 10px;
-   width: 55%;
-   color: white;
-   display: flex;
-   flex-direction: column;
-}
-.course_item{
-    margin-left: 25px;
-    margin-bottom: 30px;
-}
-.course_info{
-    padding: 10px;
-    background-color: rgb(65, 63, 63);
-}
-.course_info p{
-    color: rgb(224, 219, 219);
-    font-size: 18px;
-    line-height: 25px;
-    width: 70%;
-}
-.sub_menu{
-    margin-top: -13px;
-}
-.sub_menu ul{
-    color: black;
-}
-.sub_menu ul li{
-    list-style: none;
-}
-.sub_menu ul ul{
-    display: none;
-}
-.sub_menu ul li:hover > ul{
-    display: block;
-}
->>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
 .sub_menu ul ul ul{
     display: none;
 }

@@ -20,15 +20,6 @@
             <input type="text" id="name" v-model="name" placeholder="Entrer votre Nom" />
             <small>Error message</small>
             </div>
-<<<<<<< HEAD
-=======
-            <div class="sign-control">
-            <label for="pseudo">Pseudo</label>
-            <input type="text" id="pseudo" v-model="pseudo" placeholder="Entrer votre Pseudo" />
-            <small>Error message</small>
-            </div>
-        </div>
->>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
         <div class="contains">
             <div class="sign-control">
             <label for="mail">Email</label>
@@ -36,19 +27,19 @@
             <small>Error message</small>
             </div>
             <div class="sign-control">
-            <label for="phone">Telephone</label>
+            <label for="phone">Téléphone</label>
             <input type="text" id="phone" v-model="phone" placeholder="Entrer votre numero" />
             <small>Error message</small>
             </div>
         </div>
          <div class="contains">
             <div class="sign-control">
-                <label for="files">Image file</label>
+                <label for="files">Image de profil</label>
                 <input type="file" name="files"  id="files">
                 <small>Error message</small>
             </div>
             <div class="sign-control">
-                <label for="sex">sex</label>
+                <label for="sex">Sexe</label>
                 <select name="sex" id="sex" v-model="sex">
                     <option  value="M">M</option>
                     <option value="F">F</option>
@@ -57,15 +48,15 @@
          </div>
         <div class="sign-control">
           <label for="sign_password">Mot de Passe</label>
-          <input type="password" id="sign_password" v-model="password" placeholder="Enter Mot de Passe" />
+          <input type="password" id="sign_password" v-model="password" placeholder="Entrer Mot de Passe" />
           <small>Error message</small>
         </div>
         <div class="sign-control">
-          <label for="sign_password2">Confirm Password</label>
-          <input type="password" id="sign_password2" v-model="password2" placeholder="Enter password again"/>
+          <label for="sign_password2">Confirmer Mot passe</label>
+          <input type="password" id="sign_password2" v-model="password2" placeholder="Entrer de nouveau Mot de passe"/>
           <small>Error message</small>
         </div>
-        <button type="submit" @click="submit">Submit</button>
+        <button type="submit" @click="submit">Valider</button>
       </form>
     </div>
 </div>
@@ -84,10 +75,6 @@ export default {
           { val: "login_master.png" },
           { val: "login_admin.png" },
         ],
-<<<<<<< HEAD
-=======
-        pseudo:null,
->>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
         name:null,
         email:null,
         phone:null,
@@ -139,7 +126,6 @@ export default {
           this.statut='Admin';
     },
     click(){
-<<<<<<< HEAD
         if(this.name && this.email && this.phone && this.sex  && this.password===this.password2 ){
             this.$store.dispatch('register', {
                  user:{
@@ -161,29 +147,6 @@ export default {
                 console.log('connexion reussi')     
         }
       register.validate(this.name,this.email,this.phone,this.sex,this.password,this.password2)
-=======
-        this.$router.push({name: 'Home_user', params: {pseudo:this.pseudo }})
-        if(this.name && this.pseudo && this.email && this.phone && this.sex  && this.password==this.password2 ){
-            this.$store.dispatch('register', {
-                name: this.name,
-                pseudo: this.pseudo,
-                email: this.email,
-                phone: this.phone,
-                img: this.img,
-                sex: this.sex,
-                password: this.password,
-                statut: this.statut,
-            })
-            .then( () =>{
-              if(this.statut=='Apprenant'){
-                 this.$router.push({name: 'Home', params: {name:this.name }})
-              }
-              
-            })
-                console.log('connexion reussi')     
-        }
-      register.validate(this.name,this.pseudo,this.email,this.phone,this.sex,this.password,this.password2,this.statut)
->>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
     }
 },
 }

@@ -37,11 +37,11 @@ export default {
         show: false,
         slides_title: [
           { title_val: "Apprentissage Gratuit" },
-          { title_val: "Des Experts a votre disposition" },
+          { title_val: "Des Experts à votre disposition" },
         ],
         slides_txt: [
-          { txt_val: "Formez vous des aujourd'hui de facon structuré, détaillé, grace a notre plateforme Youtube Dev" },
-          { txt_val: "Nos experts du monde entier sélectionne les meilleurs vidéos d'apprentissage, pour vous offrir les outils et les compétences." },
+          { txt_val: "Formez vous dès aujourd'hui dans divers domaines du developpement web en suivant des programmes structurés et détaillés, grace à notre plateforme Youtube Dev." },
+          { txt_val: "Des experts du monde entier sélectionnent chaque jour les meilleurs vidéos d'apprentissage pour vous offrir le strict nécessaire pour votre formatiion.." },
         ],
         slides_pic: [
           { pic_val: "header_slide_1.png" },

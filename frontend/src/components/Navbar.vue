@@ -9,7 +9,7 @@
         <div>
             <ul class="main_nav">
                 <li><router-link :to="{name: 'Home'}" class="link">Home</router-link></li>
-                <li><router-link :to="{name: 'Login'}" class="link">Categories</router-link></li>
+                <li><router-link :to="{name: 'Login'}" class="link">Catégories</router-link></li>
                 <li><router-link :to="{name: 'Login'}" class="link">Se Connecter</router-link></li>
                 <li><router-link :to="{name: 'Register'}" class="link">S'inscrire</router-link></li>
                 <li>

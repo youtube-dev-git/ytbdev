@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="home_intro">
-        <h1>Un large sylabus de cours a votre disposition</h1>
-        <p>Choisissez parmi nos vidéos de cours celle qui vous convient.. </p>
+        <h1>Une variété de syllabus de diverses formations à votre disposition</h1>
+        <p>Choisissez juste celles qui vous conviennent.. </p>
     </div>
     <div class="tabset">
         <!-- Tab 1 -->
@@ -22,11 +22,7 @@
             <section id="tabpanel_1" class="tab-panel">
              <div class="sylab">
                <div v-for="sylab in html_filter" :key="sylab.id" class="sylab_info">
-<<<<<<< HEAD
                  <router-link :to="{name: 'Login' }" class="link">
-=======
-                 <router-link :to="{name: 'Home' }" class="link">
->>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
                   <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
                   <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
@@ -77,11 +73,7 @@
             </section>
         </div>
     </div>
-<<<<<<< HEAD
-    <h1 class="sylab_txt">Tous nos Sylabus</h1>
-=======
-    <h1>Tous nos Sylabus</h1>
->>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
+    <h1 class="sylab_txt"> Syllabus</h1>
     <div class="all_sylab">
        <div class="sylab_all">
                <div v-for="sylab in all" :key="sylab.id" class="sylab_info">
@@ -106,7 +98,7 @@
         </div>
     </div>
     <div class="home_ctg">
-        <h1><i class="las la-tags"></i> Nos Categories</h1>
+        <h1><i class="las la-tags"></i> Catégories</h1>
         <div class="ctg_items">
             <div class="ctg_item">
              <img src="@/assets/frontend.png" alt="">
@@ -122,13 +114,13 @@
             </div>
             <div class="ctg_item">
              <img src="@/assets/data_science.png" alt="">
-             <p>Data Sciences</p>
+             <p>Data Science</p>
             </div>
         </div>
     </div>
     <div class="other">
       <div class="other_transit">
-        <p>Des Videos gratuites de bonne qualité provenant de Youtube</p>
+        <p>Des Vidéos gratuites de haute définition provenant de Youtube</p>
         <i class="lab la-youtube"></i>
       </div>
       <div class="expert">
@@ -137,7 +129,7 @@
         </div>
         <div class="expert_txt">
            <h1>Devenir formateur</h1>
-           <p>Nos formateurs du monde entier donnent des cours à des millions de participants sur Udemy.
+           <p>Nos formateurs, provenant de divers horizons dispensent des cours à des millions d' utilisateurs sur Youtube Dev.
              Nous vous offrons les outils et les compétences nécessaires pour enseigner ce que vous aimez.</p>
              <button>Devenir Expert</button>
         </div>
@@ -266,7 +258,6 @@ Tabs : debut
     display: flex;  
     overflow: hidden;
 }
-<<<<<<< HEAD
 .sylab_txt{
   font-size: 30px;
   color: #363434;
@@ -278,8 +269,6 @@ Tabs : debut
     padding-bottom: 7px;
     border-bottom: 3px solid orangered;
 }
-=======
->>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
 .sylab_all{
 display: flex;
 flex-wrap: wrap;
@@ -337,11 +326,7 @@ width: 100%;
     font-size: 15px;
 }
 .home_ctg h1{
-<<<<<<< HEAD
   font-size: 25px;
-=======
-  font-size: 20px;
->>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
 }
 .ctg_items{
     text-transform: capitalize;
