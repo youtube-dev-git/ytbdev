@@ -28,15 +28,20 @@
                          <ul>
                             <li><button class="list_btn">Afficher Videos</button>
                             <ul class="lst_lecons">
-                                <li><p class="lecon_title">lecon_1 : HTML les bases</p> 
+                                <li><p class="lecon_title">Lecon_1 : HTML les bases</p> 
                                 <ul>
-                                    <li class="lecon_item">lecon1 : video_1</li>
-                                    <li class="lecon_item">lecon2 : video_2</li>
+                                    <li class="lecon_item">
+                                      <div class="video_item">
+                                          <iframe width="270" height="200"  src="https://www.youtube.com/embed/2r6zeeGIfoI"></iframe>
+                                          <iframe width="270" height="200" v-bind:src="'https://www.youtube.com/embed/' + url"></iframe>
+                                      </div>
+                                    </li>
+                                    <li class="lecon_item">Lecon2 : video_2</li>
                                 </ul>
                                 </li>
-                                <li><p class="lecon_title">lecon_2 : CSS les bases</p> 
+                                <li><p class="lecon_title">Lecon_2 : CSS les bases</p> 
                                 <ul>
-                                    <li class="lecon_item">lecon1 : video_1</li>
+                                    <li class="lecon_item">Lecon1 : video_1</li>
                                 </ul> 
                                 </li>
                             </ul>
@@ -65,6 +70,11 @@ export default {
     props:['id'],
     components: {
     Footer
+  },
+  data(){
+      return{
+          url:"2r6zeeGIfoI"
+      }
   },
   created(){
     this.tests()
@@ -220,5 +230,8 @@ export default {
     border-radius: 5px;
     padding: 2px;
     color: whitesmoke;
+}
+.video_item iframe{
+    margin-right: 60px;
 }
 </style>
