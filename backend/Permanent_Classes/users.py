@@ -5,6 +5,7 @@ from pydantic import BaseModel
 from Permanent_Classes.syllabus import Syllabus
 
 class User(BaseModel):
+    statut : Optional[str]
     id: Optional[int]
     name : str
     email: str
@@ -20,6 +21,7 @@ class User(BaseModel):
         pass
 
 class Admin(User):
+    statut = "admin"
     def __init__(__pydantic_self__, **data: Any) -> None:
         super().__init__(**data)
     
@@ -28,6 +30,7 @@ class Admin(User):
         return DAOAdmin.save(self)
         
 class Learner(User):
+    statut = "learner"
     def __init__(__pydantic_self__, **data: Any) -> None:
         super().__init__(**data)
     
@@ -36,6 +39,7 @@ class Learner(User):
         return DAOLearner.save(self)
         
 class Expert(Learner):
+    statut = "expert"
     def __init__(__pydantic_self__, **data: Any) -> None:
         super().__init__(**data)
     
