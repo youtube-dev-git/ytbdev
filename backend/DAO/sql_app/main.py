@@ -16,7 +16,7 @@ def get_db():
         yield db
     finally:
         db.close()
-
+# get user
 
 @app.post("/users/", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
@@ -39,12 +39,44 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
     return db_user
 
+#get admin
 
-@app.post("/users/{user_id}/items/", response_model=schemas.Item)
-def create_item_for_user(
-    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
+@app.post("/admins/", response_model=schemas.User)
+
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    db_user = crud.get_user_by_email(db, email=user.email)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return crud.create_user(db=db, user=user)
+
+
+def create_admin(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
+    db_admin = crud.get_admin_by_email(db, email=admin.users.email)
+    if db_admin:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return crud.create_admin(db=db, admin=admin)
+
+
+@app.get("/admins/", response_model=list[schemas.User])
+def read_admins(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    admins = crud.get_admins(db, skip=skip, limit=limit)
+    return admins
+
+
+@app.get("/admins/{admin_id}", response_model=schemas.User)
+def read_admin(admin_id: int, db: Session = Depends(get_db)):
+    db_admin = crud.get_admin(db, admin_id=admin_id)
+    if db_admin is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return db_admin
+
+
+
+@app.post("/admins/{admin_id}/items/", response_model=schemas.Item)
+def create_item_for_admin(
+    admin_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
 ):
-    return crud.create_user_item(db=db, item=item, user_id=user_id)
+    return crud.create_admin_item(db=db, item=item, admin_id=admin_id)
 
 
 @app.get("/items/", response_model=list[schemas.Item])
