@@ -1,5 +1,6 @@
 
 from asyncio.windows_events import NULL
+from typing import List
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
@@ -55,7 +56,7 @@ class DAOObjects(BaseModel):
         return crud.create_admin(db=db, admin=admin)
 
 
-    @app.get("/admins/", response_model=list[schemas.Admin])
+    @app.get("/admins/", response_model=List[schemas.Admin])
     def read_admins(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         admins = crud.get_admins(db, skip=skip, limit=limit)
         return admins
@@ -78,7 +79,7 @@ class DAOObjects(BaseModel):
         return crud.create_expert(db=db, expert=expert)
 
 
-    @app.get("/experts/", response_model=list[schemas.Expert])
+    @app.get("/experts/", response_model=List[schemas.Expert])
     def read_experts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         experts = crud.get_experts(db, skip=skip, limit=limit)
         return experts
@@ -101,7 +102,7 @@ class DAOObjects(BaseModel):
         return crud.create_learner(db=db, learner=learner)
 
 
-    @app.get("/learners/", response_model=list[schemas.Learner])
+    @app.get("/learners/", response_model=List[schemas.Learner])
     def read_learners(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         learners = crud.get_learners(db, skip=skip, limit=limit)
         return learners
