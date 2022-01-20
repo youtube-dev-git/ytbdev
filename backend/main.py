@@ -2,6 +2,24 @@
 from typing import List
 from winreg import QueryReflectionKey
 from fastapi import FastAPI, HTTPException, status
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 from Permanent_Classes.syllabus import Syllabus
 from Permanent_Classes.users import Admin, Learner, Expert
@@ -9,7 +27,6 @@ from DAO.DAOObjects import DAOObject
 from Types import TypeUser, TypeSyllabus, TypeLogin
 from videos_fetcher.system import System
 
-app = FastAPI()
 
 @app.post("/register", status_code = status.HTTP_201_CREATED)
 def index(query : TypeUser):
@@ -21,7 +38,7 @@ def index(query : TypeUser):
     #     password="jfdk",
     #     gender="jfdk",
     # )
-    return query.user
+    # return query.user
     if(query.status == "admin"):
         user = Admin(**vars(query.user))
     elif(query.status == "learner"):
@@ -41,9 +58,6 @@ def index(query : TypeUser):
 @app.post("/login", status_code=status.HTTP_200_OK)
 def index(request: TypeLogin):
     user = DAOObject.connect_user(request.email, request.password)
-    # return {
-        
-    # }
     if not user :
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail= "User not found")
