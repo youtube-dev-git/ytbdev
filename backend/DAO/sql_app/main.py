@@ -1,5 +1,5 @@
 
-from typing import List
+from asyncio.windows_events import NULL
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
@@ -9,7 +9,7 @@ from .database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI() 
+app = FastAPI()
 
 
 # Dependency
@@ -24,28 +24,28 @@ def get_db():
 
 ######################
 class DAOObjects(BaseModel):
-    ################ loging ####"
-    @app.post("/admins/", response_model=schemas.Admin)
+################ loging ####"
+    #@app.post("/admins/", response_model=schemas.Admin)
     def login_admin(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
         db_admin = crud.get_admin_by_email(db, email=admin.email)
         if not db_admin:
-            return None
+            return NULL
         return db_admin
-    
-    @app.post("/experts/", response_model=schemas.Admin)
+
+    #@app.post("/experts/", response_model=schemas.Admin)
     def login_experts(experts: schemas.AdminCreate, db: Session = Depends(get_db)):
         db_experts = crud.get_expert_by_email(db, email=experts.email)
         if not db_experts:
-            return None
+            return NULL
         return db_experts  
-    
-    @app.post("/learners/", response_model=schemas.Admin)
+
+    #@app.post("/learners/", response_model=schemas.Admin)
     def login_learners(learners: schemas.AdminCreate, db: Session = Depends(get_db)):
         db_learners = crud.get_learner_by_email(db, email=learners.email)
         if not db_learners:
-            return None
+            return NULL
         return db_learners      
-    
+
     ###################### Register ########
     @app.post("/admins/", response_model=schemas.Admin)
     def create_admin(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
@@ -55,7 +55,7 @@ class DAOObjects(BaseModel):
         return crud.create_admin(db=db, admin=admin)
 
 
-    @app.get("/admins/", response_model=List[schemas.Admin])
+    @app.get("/admins/", response_model=list[schemas.Admin])
     def read_admins(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         admins = crud.get_admins(db, skip=skip, limit=limit)
         return admins
@@ -78,7 +78,7 @@ class DAOObjects(BaseModel):
         return crud.create_expert(db=db, expert=expert)
 
 
-    @app.get("/experts/", response_model=List[schemas.Expert])
+    @app.get("/experts/", response_model=list[schemas.Expert])
     def read_experts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         experts = crud.get_experts(db, skip=skip, limit=limit)
         return experts
@@ -101,7 +101,7 @@ class DAOObjects(BaseModel):
         return crud.create_learner(db=db, learner=learner)
 
 
-    @app.get("/learners/", response_model=List[schemas.Learner])
+    @app.get("/learners/", response_model=list[schemas.Learner])
     def read_learners(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         learners = crud.get_learners(db, skip=skip, limit=limit)
         return learners
