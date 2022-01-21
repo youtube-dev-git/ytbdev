@@ -45,6 +45,7 @@ class MainDAO:
         # est retourné avec son identifiant de base de données
         
         # NB: La vérification doit se faire dans l'ordre : admin, puis expert, puis apprenant
+        DAOObjects.login_admin(mail,password)
         ...
     
 class AdminDAO:
@@ -60,6 +61,7 @@ class LearnerDAO:
     def save(self, learner : Learner) -> Learner:
         # Cette fonction enregistre un aprennant en base de données
         ...
+        DAOObjects.create_learner(learner)
     
 class ExpertDAO(LearnerDAO):
     
