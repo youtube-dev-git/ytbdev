@@ -35,6 +35,9 @@ def index():
 @app.post("/register", status_code = status.HTTP_201_CREATED)
 def index(query : TypeUser):
     user = None
+    # return {
+    #     "data" : "registration working"
+    # }
     if(query.status == "admin"):
         user = Admin(**vars(query.user))
     elif(query.status == "learner"):
@@ -53,17 +56,20 @@ def index(query : TypeUser):
 
 @app.post("/login", status_code=status.HTTP_200_OK)
 def index(request: TypeLogin):
+    # return {
+    #     "data" : "login working"
+    # }
     user = MainDAO.connect_user(request.email, request.password)
     if not user :
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail= "User not found")
     return user
 
-@app.get("/login", status_code=status.HTTP_200_OK)
-def index():
-    return {
-        "data" : "get worked"
-    }
+# @app.get("/login", status_code=status.HTTP_200_OK)
+# def index():
+#     return {
+#         "data" : "get worked"
+#     }
 
 @app.post("/syllabus")
 def saveTraining(query : TypeSyllabus):
@@ -74,6 +80,123 @@ def saveTraining(query : TypeSyllabus):
 
 @app.get("/syllabus")
 def listTrainings() -> List[Syllabus]:
+    return [
+                {
+                    "id" : 1,
+                    "title": "Formation HTML CSS pour les nuls",
+                    "lessons": [
+                        {
+                            "title": "Utilisation des divs",
+                            "videos": [
+                                {
+                                    "videoId": "9TycLR0TqFA",
+                                    "title": "Why I didn't ate my father",
+                                    "viewCount": 256,
+                                    "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                                    "published_at": "12/12/12",
+                                    "thumbnails_medium": "https://jfkdsq",
+                                    "channel_id": "fjjfiodsqpjf"
+                                },
+                                {
+                                    "videoId": "9TycLR0TqFA",
+                                    "title": "Why I didn't ate my father",
+                                    "viewCount": 256,
+                                    "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                                    "published_at": "12/12/12",
+                                    "thumbnails_medium": "https://jfkdsq",
+                                    "channel_id": "fjjfiodsqpjf"
+                                },
+                                {
+                                    "videoId": "9TycLR0TqFA",
+                                    "title": "Why I didn't ate my father",
+                                    "viewCount": 256,
+                                    "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                                    "published_at": "12/12/12",
+                                    "thumbnails_medium": "https://jfkdsq",
+                                    "channel_id": "fjjfiodsqpjf"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id" : 2,
+                    "title": " HTML CSS JS de A à Z",
+                    "lessons": [
+                        {
+                            "title": "Utilisation des divs",
+                            "videos": [
+                                {
+                                    "videoId": "9TycLR0TqFA",
+                                    "title": "Why I didn't ate my father",
+                                    "viewCount": 256,
+                                    "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                                    "published_at": "12/12/12",
+                                    "thumbnails_medium": "https://jfkdsq",
+                                    "channel_id": "fjjfiodsqpjf"
+                                },
+                                {
+                                    "videoId": "9TycLR0TqFA",
+                                    "title": "Why I didn't ate my father",
+                                    "viewCount": 256,
+                                    "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                                    "published_at": "12/12/12",
+                                    "thumbnails_medium": "https://jfkdsq",
+                                    "channel_id": "fjjfiodsqpjf"
+                                },
+                                {
+                                    "videoId": "9TycLR0TqFA",
+                                    "title": "Why I didn't ate my father",
+                                    "viewCount": 256,
+                                    "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                                    "published_at": "12/12/12",
+                                    "thumbnails_medium": "https://jfkdsq",
+                                    "channel_id": "fjjfiodsqpjf"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id" : 3,
+                    "title": "FastAPI, le backend manière Fast",
+                    "lessons": [
+                        {
+                            "title": "Utilisation des divs",
+                            "videos": [
+                                {
+                                    "videoId": "9TycLR0TqFA",
+                                    "title": "Why I didn't ate my father",
+                                    "viewCount": 256,
+                                    "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                                    "published_at": "12/12/12",
+                                    "thumbnails_medium": "https://jfkdsq",
+                                    "channel_id": "fjjfiodsqpjf"
+                                },
+                                {
+                                    "videoId": "9TycLR0TqFA",
+                                    "title": "Why I didn't ate my father",
+                                    "viewCount": 256,
+                                    "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                                    "published_at": "12/12/12",
+                                    "thumbnails_medium": "https://jfkdsq",
+                                    "channel_id": "fjjfiodsqpjf"
+                                },
+                                {
+                                    "videoId": "9TycLR0TqFA",
+                                    "title": "Why I didn't ate my father",
+                                    "viewCount": 256,
+                                    "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
+                                    "published_at": "12/12/12",
+                                    "thumbnails_medium": "https://jfkdsq",
+                                    "channel_id": "fjjfiodsqpjf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+
     return MainDAO.list_trainings()
 
 @app.get("/syllabus/{id}")
