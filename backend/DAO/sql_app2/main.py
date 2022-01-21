@@ -41,13 +41,13 @@ def read_syllabus(syllabus_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Syllabus not found")
     return db_syllabus
 
-@app.post("/syllabus/{syllabus_id}/video/" , response_model=schemas.Video)
-def create_syllabus_video(syllabus_id: int, video: schemas.VideoCreate, db: Session = Depends(get_db)
+@app.post("/syllabus/{syllabus_id}/lessons/" , response_model=schemas.Lesson)
+def create_syllabus_lessons(syllabus_id: int, lessons: schemas.LessonCreate, db: Session = Depends(get_db)
 ):
-    return crud.create_video(db=db, video=video, syllabus_id=syllabus_id)
+    return crud.create_lesson(db=db, lessons=lessons, syllabus_id=syllabus_id)
 
 
-@app.post("/syllabus/{syllabus_id}/lecons/" , response_model=schemas.Lecon)
-def create_syllabus_lecon(syllabus_id: int, lecons: schemas.LeconCreate, db: Session = Depends(get_db)
+@app.post("/syllabus/{lessons_id}/video/" , response_model=schemas.Video)
+def create_video_lesson(lessons_id: int, video: schemas.VideoCreate, db: Session = Depends(get_db)
 ):
-    return crud.create_lecon(db=db, lecons=lecons, syllabus_id=syllabus_id)
+    return crud.create_video(db=db, video=video, lessons_id=lessons_id)

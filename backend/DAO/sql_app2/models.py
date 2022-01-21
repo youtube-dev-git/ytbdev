@@ -11,8 +11,18 @@ class Syllabus(Base):
     title = Column(String)
     description= Column(String, unique=True, index=True)
 
-    video= relationship("Video", back_populates="owner")
-    lecons=relationship("Lecon", back_populates="owner_lecon")
+    lessons= relationship("Lesson", back_populates="owner")
+
+
+class Lesson(Base):
+    __tablename__ = "lessons"
+
+    id= Column(Integer, primary_key=True, index=True)
+    title = Column(String(50), index=True)
+    owner_lesson_id = Column(Integer, ForeignKey("syllabus.id"))
+
+    owner= relationship("Syllabus", back_populates="lessons")
+    video=relationship("Video", back_populates="owner_video")
 
 
     
@@ -26,18 +36,11 @@ class Video(Base):
     publishedAt = Column(String(50), index=True)
     thumbnails = Column(String(50), index=True)
     channel_id = Column(String(50), index=True)
-    owner_id = Column(Integer, ForeignKey("syllabus.id"))
+    owner_video_id = Column(Integer, ForeignKey("lessons.id"))
 
-    owner= relationship("Syllabus", back_populates="video")
+    owner_video= relationship("Lesson", back_populates="video")
 
-class Lecon(Base):
-    __tablename__ = "lecons"
 
-    id= Column(Integer, primary_key=True, index=True)
-    title = Column(String(50), index=True)
-    owner_lecon_id = Column(Integer, ForeignKey("syllabus.id"))
-
-    owner_lecon= relationship("Syllabus", back_populates="lecons")
 
 
 

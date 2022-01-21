@@ -71,7 +71,7 @@ class LearnerDAO:
         # Cette fonction enregistre un aprennant en base de données
         ...
         DAOObjects.create_learner(learner)
-    
+        
 class ExpertDAO(LearnerDAO):
     
     @classmethod
