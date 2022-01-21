@@ -3,12 +3,21 @@ from Permanent_Classes.syllabus import Syllabus
 from Permanent_Classes.users import User, Learner, Admin, Expert
 
 from DAO.sql_app.main import DAOObjects
+from DAO.sql_app.database import SessionLocal
 # from .Permanent_Classes import users
 
 
 class MainDAO:
     def __init__(self) -> None:
         ...
+        
+    @classmethod
+    def get_db():
+        db = SessionLocal()
+        try:
+            yield db
+        finally:
+            db.close()
     
     @classmethod
     def save_syllabus(self,expert_id: int,syllabus : Syllabus) -> int :
@@ -45,6 +54,7 @@ class MainDAO:
         # est retourné avec son identifiant de base de données
         
         # NB: La vérification doit se faire dans l'ordre : admin, puis expert, puis apprenant
+        DAOObjects.login_learners(mail,password,SessionLocal())
         ...
     
 class AdminDAO:
