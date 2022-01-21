@@ -40,8 +40,8 @@ class DAOObjects(BaseModel):
         return db_experts  
 
     #@app.post("/learners/", response_model=schemas.Admin)
-    def login_learners(learners: schemas.AdminCreate, db: Session = Depends(get_db)):
-        db_learners = crud.get_learner_by_email(db, email=learners.email)
+    def login_learners(mail:str,passwd:str, db: Session = Depends(get_db)):
+        db_learners = crud.get_learner_by_email(db, email=mail,hashed_password=passwd)
         if not db_learners:
             return NULL
         return db_learners      
