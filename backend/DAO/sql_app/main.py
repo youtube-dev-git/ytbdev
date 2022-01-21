@@ -1,7 +1,8 @@
 
-from asyncio.windows_events import NULL
+from asyncio.windows_events import None
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
+from typing import List, Optional
 
 from . import crud, models, schemas
 from pydantic import BaseModel
@@ -29,21 +30,21 @@ class DAOObjects(BaseModel):
     def login_admin(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
         db_admin = crud.get_admin_by_email(db, email=admin.email)
         if not db_admin:
-            return NULL
+            return None
         return db_admin
 
     #@app.post("/experts/", response_model=schemas.Admin)
     def login_experts(experts: schemas.AdminCreate, db: Session = Depends(get_db)):
         db_experts = crud.get_expert_by_email(db, email=experts.email)
         if not db_experts:
-            return NULL
+            return None
         return db_experts  
 
     #@app.post("/learners/", response_model=schemas.Admin)
     def login_learners(learners: schemas.AdminCreate, db: Session = Depends(get_db)):
         db_learners = crud.get_learner_by_email(db, email=learners.email)
         if not db_learners:
-            return NULL
+            return None
         return db_learners      
 
     ###################### Register ########
@@ -55,7 +56,7 @@ class DAOObjects(BaseModel):
         return crud.create_admin(db=db, admin=admin)
 
 
-    @app.get("/admins/", response_model=list[schemas.Admin])
+    @app.get("/admins/", response_model=List[schemas.Admin])
     def read_admins(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         admins = crud.get_admins(db, skip=skip, limit=limit)
         return admins
@@ -78,7 +79,7 @@ class DAOObjects(BaseModel):
         return crud.create_expert(db=db, expert=expert)
 
 
-    @app.get("/experts/", response_model=list[schemas.Expert])
+    @app.get("/experts/", response_model=List[schemas.Expert])
     def read_experts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         experts = crud.get_experts(db, skip=skip, limit=limit)
         return experts
@@ -101,7 +102,7 @@ class DAOObjects(BaseModel):
         return crud.create_learner(db=db, learner=learner)
 
 
-    @app.get("/learners/", response_model=list[schemas.Learner])
+    @app.get("/learners/", response_model=List[schemas.Learner])
     def read_learners(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         learners = crud.get_learners(db, skip=skip, limit=limit)
         return learners

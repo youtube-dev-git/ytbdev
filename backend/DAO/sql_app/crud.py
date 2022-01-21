@@ -15,7 +15,7 @@ def get_admins(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_admin(db: Session, admin: schemas.AdminCreate):
-    fake_hashed_password = admin.password + "notreallyhashed"
+    fake_hashed_password = admin.password + #"notreallyhashed"
     db_admin = models.Admin(email=admin.email, hashed_password=fake_hashed_password, name =admin.name, photo=admin.photo, phone=admin.phone,gender=admin.gender,statut=admin.statut)
     db.add(db_admin)
     db.commit()
@@ -45,8 +45,8 @@ def get_learner(db: Session, learner_id: int):
     return db.query(models.Learner).filter(models.Learner.id == learner_id).first()
 
 
-def get_learner_by_email(db: Session, email: str):
-    return db.query(models.Learner).filter(models.Learner.email == email).first()
+def get_learner_by_email(db: Session, email: str,passw):
+    return db.query(models.Learner).filter((models.Learner.email == email)&(models.Learner.hashed_password==passw)).first()
 
 def get_learners(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Learner).offset(skip).limit(limit).all()
