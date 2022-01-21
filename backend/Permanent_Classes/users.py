@@ -1,7 +1,5 @@
-from lib2to3.pgen2.token import OP
 from typing import Any, List, Optional
 from pydantic import BaseModel
-# from DAO.DAOObjects import DAOObject, DAOLearner, DAOExpert, DAOAdmin
 from Permanent_Classes.syllabus import Syllabus
 
 class User(BaseModel):
@@ -26,8 +24,8 @@ class Admin(User):
         super().__init__(**data)
     
     def register(self):
-        from DAO.DAOObjects import DAOAdmin
-        return DAOAdmin.save(self)
+        from DAO.DAOObjects import AdminDAO
+        return AdminDAO.save(self)
         
 class Learner(User):
     statut = "learner"
@@ -35,8 +33,8 @@ class Learner(User):
         super().__init__(**data)
     
     def register(self):
-        from DAO.DAOObjects import DAOLearner
-        return DAOLearner.save(self)
+        from DAO.DAOObjects import LearnerDAO
+        return LearnerDAO.save(self)
         
 class Expert(Learner):
     statut = "expert"
@@ -44,11 +42,11 @@ class Expert(Learner):
         super().__init__(**data)
     
     def register(self):
-        from DAO.DAOObjects import DAOExpert
-        return DAOExpert.save(self)
+        from DAO.DAOObjects import ExpertDAO
+        return ExpertDAO.save(self)
     
     @property
     def my_trainings(self) -> List[Syllabus]:
-        from DAO.DAOObjects import DAOObject
-        return DAOObject.list_expert_trainings(self.id)
+        from DAO.DAOObjects import MainDAO
+        return MainDAO.list_expert_trainings(self.id)
 

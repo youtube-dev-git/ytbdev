@@ -3,12 +3,21 @@ from Permanent_Classes.syllabus import Syllabus
 from Permanent_Classes.users import User, Learner, Admin, Expert
 
 from DAO.sql_app.main import DAOObjects
+from DAO.sql_app.database import SessionLocal
 # from .Permanent_Classes import users
 
 
-class DAOObject:
+class MainDAO:
     def __init__(self) -> None:
         ...
+        
+    @classmethod
+    def get_db():
+        db = SessionLocal()
+        try:
+            yield db
+        finally:
+            db.close()
     
     @classmethod
     def save_syllabus(self,expert_id: int,syllabus : Syllabus) -> int :
@@ -44,24 +53,26 @@ class DAOObject:
         # Si l'utilisateur est retrouvé dans l'une de ces tables, un objet du type correspondant 
         # est retourné avec son identifiant de base de données
         
-        # NB: La vérification doit se faire dans l'ordre : admin, puis expert, puis apprenant
+        # NB: La vérification doit se faire dans l'ordre : admin, puis expert, puis apprenant=====
+        DAOObjects.login_learners(mail,password,SessionLocal())
         ...
     
-class DAOAdmin:
+class AdminDAO:
     
     @classmethod
     def save(self, admin: Admin) -> Admin:
         # Cette fonction enregistre un administrateur en base de données
         ...
 
-class DAOLearner:
+class LearnerDAO:
     
     @classmethod
     def save(self, learner : Learner) -> Learner:
         # Cette fonction enregistre un aprennant en base de données
         ...
+        DAOObjects.create_learner(learner)
     
-class DAOExpert(DAOLearner):
+class ExpertDAO(LearnerDAO):
     
     @classmethod
     def save(self, expert : Expert) -> Expert:
