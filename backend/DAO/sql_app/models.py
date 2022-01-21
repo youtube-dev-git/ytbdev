@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 
 from .database import Base
 
+
 class Admin(Base):
     __tablename__ = "admin"
     id = Column(Integer, primary_key=True, index=True)
@@ -33,7 +34,7 @@ class Expert(Base):
     
 
 class Learner(Base):
-    __tablename__ = "Learner"
+    __tablename__ = "learner"
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String(50), unique=True, index=True)
     name = Column(String(50), unique=True, index=True)
