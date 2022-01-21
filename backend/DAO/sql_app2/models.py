@@ -11,16 +11,36 @@ class Syllabus(Base):
     title = Column(String)
     description= Column(String, unique=True, index=True)
 
-    videos= relationship("Video", back_populates="owner")
-   
+    video= relationship("Video", back_populates="owner")
+    lecons=relationship("Lecon", back_populates="owner_lecon")
 
 
-class  Video(Base):
-    __tablename__ ="videos"
+    
+class Video(Base):
+    __tablename__ = "video"
 
-    id=Column(Integer, primary_key=True, index=True)
-    title=Column(String)
-    Meta=Column(String, unique=True, index=True)
-    owner_id= Column(Integer, ForeignKey=("Syllabus.id"))
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String(50), index=True)
+    viewCount = Column(Integer, index=True)
+    description = Column(String(150), index=True)
+    publishedAt = Column(String(50), index=True)
+    thumbnails = Column(String(50), index=True)
+    channel_id = Column(String(50), index=True)
+    owner_id = Column(Integer, ForeignKey("syllabus.id"))
 
-    owner=relationship("Syllabus", back_populates="videos")
+    owner= relationship("Syllabus", back_populates="video")
+
+class Lecon(Base):
+    __tablename__ = "lecons"
+
+    id= Column(Integer, primary_key=True, index=True)
+    title = Column(String(50), index=True)
+    owner_lecon_id = Column(Integer, ForeignKey("syllabus.id"))
+
+    owner_lecon= relationship("Syllabus", back_populates="lecons")
+
+
+
+
+
+    

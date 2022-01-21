@@ -21,9 +21,18 @@ def create_syllabus(db: Session, syllabus: schemas.SyllabusCreate):
     db.refresh(db_syllabus)
     return db_syllabus
 
-def get_videos(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.videos).offset(skip). limit(limit).all()
+def create_video(db: Session, video: schemas.VideoCreate, syllabus_id: int):
+    db_video = models.Video(**video.dict(), owner_id=syllabus_id)
+    db.add(db_video)
+    db.commit()
+    db.refresh(db_video)
+    return db_video
+    
 
-def create_syllabus_video(db: Session, videos: schemas.VideoCreate, syllabus_id: int):
-
+def create_lecon(db: Session, lecons: schemas.LeconCreate, syllabus_id: int):
+    db_lecons = models.Lecon(**lecons.dict(), owner_lecon_id=syllabus_id)
+    db.add(db_lecons)
+    db.commit()
+    db.refresh(db_lecons)
+    return db_lecons
     

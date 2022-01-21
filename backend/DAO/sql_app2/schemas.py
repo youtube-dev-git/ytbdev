@@ -5,16 +5,45 @@ from pydantic import BaseModel
 
 
 
+
 class VideoBase(BaseModel):
-    Meta: str
-    title: str
+    # videoID : str
+    title : str
+    viewCount : int
+    description : str 
+    publishedAt : str
+    thumbnails : str
+    # channel_id : str
 
 class VideoCreate(VideoBase):
-    pass
+    pass  
 
 class Video(VideoBase):
     id: int
     owner_id: int
+    
+    class Config:
+        orm_mode = True
+
+
+
+    
+    
+
+class LeconBase(BaseModel):
+    title : str
+    
+
+class LeconCreate(LeconBase):
+    pass  
+
+class Lecon(LeconBase):
+    id: int
+    owner_lecon_id: int
+    
+    class Config:
+        orm_mode = True
+
 
 
 class SyllabusBase(BaseModel):
@@ -23,13 +52,12 @@ class SyllabusBase(BaseModel):
 
 class SyllabusCreate(SyllabusBase):
     description: str
-    
-
 
 class Syllabus(SyllabusBase):
     id: int
-    videos: List[Video] = []
-    
+    video: List[Video] = []
+    lecons: List[Lecon] = []
+
 
     class Config:
         orm_mode = True
