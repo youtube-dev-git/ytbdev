@@ -6,7 +6,7 @@ from DAO.sql_app.main import DAOObjects
 # from .Permanent_Classes import users
 
 
-class DAOObject:
+class MainDAO:
     def __init__(self) -> None:
         ...
     
@@ -47,21 +47,21 @@ class DAOObject:
         # NB: La vérification doit se faire dans l'ordre : admin, puis expert, puis apprenant
         ...
     
-class DAOAdmin:
+class AdminDAO:
     
     @classmethod
     def save(self, admin: Admin) -> Admin:
         # Cette fonction enregistre un administrateur en base de données
         ...
 
-class DAOLearner:
+class LearnerDAO:
     
     @classmethod
     def save(self, learner : Learner) -> Learner:
         # Cette fonction enregistre un aprennant en base de données
         ...
     
-class DAOExpert(DAOLearner):
+class ExpertDAO(LearnerDAO):
     
     @classmethod
     def save(self, expert : Expert) -> Expert:
