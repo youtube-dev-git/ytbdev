@@ -33,7 +33,6 @@
   ],
   "Register": [
     {
-<<<<<<< HEAD
       "user": {
         "name": "Nkweo william",
         "email": "williamtankoua@gmail.com",
@@ -44,6 +43,30 @@
       },
       "statut": "Apprenant",
       "id": 1
+    },
+    {
+      "user": {
+        "name": "SIPING",
+        "email": "gwladyssiping6@gmail.com",
+        "phone_num": "693707668",
+        "password": "1111",
+        "gender": "F",
+        "photo": "no_pic.png"
+      },
+      "statut": "Apprenant",
+      "id": 2
+    },
+    {
+      "user": {
+        "name": "brecht",
+        "email": "brtankoua@gmail.com",
+        "phone_num": "693707668",
+        "password": null,
+        "gender": "M",
+        "photo": "no_pic.png"
+      },
+      "statut": "Apprenant",
+      "id": 3
     }
   ],
   "Login": [
@@ -61,10 +84,10 @@
         "title": "HTML pour les nuls",
         "lessons": [
           {
-            "title": "Qu'est ce que html",
+            "title": "Qu'est ce que le HTML",
             "video": [
               {
-                "link": "aaaa"
+                "link": "2r6zeeGIfoI"
               }
             ]
           },
@@ -72,15 +95,11 @@
             "title": "Qu'est ce que css",
             "video": [
               {
-                "link": "bbbb"
+                "link": "QI8NMJy2L1k"
               }
             ]
           }
         ]
-      },
-      "lecon": {
-        "title": "Nkweo william",
-        "video": {}
       }
     },
     {
@@ -89,7 +108,7 @@
         "title": "css pour les nul",
         "lessons": [
           {
-            "title": "c est quoi css",
+            "title": "Balises HTML ",
             "videos": [
               {
                 "link": "aaaaa.ytb"
@@ -107,49 +126,6 @@
         ]
       },
       "id": "4J5QMed"
-=======
-      "id": 1,
-      "name": "Brecht",
-      "pseudo": "OTK",
-      "email": "brtankoua@gmail.com",
-      "phone": "651009128",
-      "img": "no_pic.jpg",
-      "sex": "M",
-      "password": "susanoo"
-    },
-    {
-      "name": "xx",
-      "pseudo": "xx",
-      "email": "xx",
-      "phone": "xx",
-      "img": "no_pic.png",
-      "sex": "M",
-      "password": "x",
-      "statut": "Apprenant",
-      "id": 2
-    },
-    {
-      "name": "brecht tankoua",
-      "pseudo": "susano",
-      "email": "brtankoua@gmail.com",
-      "phone": "693707668",
-      "img": "no_pic.png",
-      "sex": "M",
-      "password": "sss",
-      "statut": "Apprenant",
-      "id": 3
-    },
-    {
-      "name": "b",
-      "pseudo": "b",
-      "email": "b",
-      "phone": "b",
-      "img": "no_pic.png",
-      "sex": "M",
-      "password": "b",
-      "statut": "Apprenant",
-      "id": 4
->>>>>>> e7b8036f20a8054b30f93c4be35a1cba4217e434
     }
   ]
 }

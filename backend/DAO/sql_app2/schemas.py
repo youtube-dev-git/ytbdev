@@ -13,7 +13,7 @@ class VideoBase(BaseModel):
     description : str 
     publishedAt : str
     thumbnails : str
-    channel_id : str
+    # channel_id : str
 
 class VideoCreate(VideoBase):
     pass  
@@ -25,19 +25,39 @@ class Video(VideoBase):
     class Config:
         orm_mode = True
 
+
+
+    
+    
+
+class LeconBase(BaseModel):
+    title : str
+    
+
+class LeconCreate(LeconBase):
+    pass  
+
+class Lecon(LeconBase):
+    id: int
+    owner_lecon_id: int
+    
+    class Config:
+        orm_mode = True
+
+
+
 class SyllabusBase(BaseModel):
     title: str
 
 
 class SyllabusCreate(SyllabusBase):
     description: str
-    
-
 
 class Syllabus(SyllabusBase):
     id: int
     video: List[Video] = []
-    
+    lecons: List[Lecon] = []
+
 
     class Config:
         orm_mode = True

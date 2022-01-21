@@ -1,0 +1,1 @@
+{"id":"3216b1fd-019c-4ba4-8306-6f991b922719","space":16399,"runtime":"python3.9","name":"backend","path":"ng70hk","project":"a0bg2xjg","account":"144798365827","region":"eu-central-1","deps":["fastAPI","uvicorn","sqlAlchemy","google-api-python-client"],"envs":null,"public":true,"log_level":"debug","cron":""}

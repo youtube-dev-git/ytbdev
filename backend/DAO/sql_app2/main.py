@@ -45,3 +45,9 @@ def read_syllabus(syllabus_id: int, db: Session = Depends(get_db)):
 def create_syllabus_video(syllabus_id: int, video: schemas.VideoCreate, db: Session = Depends(get_db)
 ):
     return crud.create_video(db=db, video=video, syllabus_id=syllabus_id)
+
+
+@app.post("/syllabus/{syllabus_id}/lecons/" , response_model=schemas.Lecon)
+def create_syllabus_lecon(syllabus_id: int, lecons: schemas.LeconCreate, db: Session = Depends(get_db)
+):
+    return crud.create_lecon(db=db, lecons=lecons, syllabus_id=syllabus_id)
