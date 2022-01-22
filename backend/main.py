@@ -90,7 +90,7 @@ def listTrainings() -> List[Syllabus]:
                             "title": "Utilisation des divs",
                             "videos": [
                                 {
-                                    "videoId": "9TycLR0TqFA",
+                                    "video_id": "9TycLR0TqFA",
                                     "title": "Why I didn't ate my father",
                                     "viewCount": 256,
                                     "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
@@ -99,7 +99,7 @@ def listTrainings() -> List[Syllabus]:
                                     "channel_id": "fjjfiodsqpjf"
                                 },
                                 {
-                                    "videoId": "9TycLR0TqFA",
+                                    "video_id": "9TycLR0TqFA",
                                     "title": "Why I didn't ate my father",
                                     "viewCount": 256,
                                     "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
@@ -108,7 +108,7 @@ def listTrainings() -> List[Syllabus]:
                                     "channel_id": "fjjfiodsqpjf"
                                 },
                                 {
-                                    "videoId": "9TycLR0TqFA",
+                                    "video_id": "9TycLR0TqFA",
                                     "title": "Why I didn't ate my father",
                                     "viewCount": 256,
                                     "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
@@ -128,7 +128,7 @@ def listTrainings() -> List[Syllabus]:
                             "title": "Utilisation des divs",
                             "videos": [
                                 {
-                                    "videoId": "9TycLR0TqFA",
+                                    "video_id": "9TycLR0TqFA",
                                     "title": "Why I didn't ate my father",
                                     "viewCount": 256,
                                     "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
@@ -137,7 +137,7 @@ def listTrainings() -> List[Syllabus]:
                                     "channel_id": "fjjfiodsqpjf"
                                 },
                                 {
-                                    "videoId": "9TycLR0TqFA",
+                                    "video_id": "9TycLR0TqFA",
                                     "title": "Why I didn't ate my father",
                                     "viewCount": 256,
                                     "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
@@ -146,7 +146,7 @@ def listTrainings() -> List[Syllabus]:
                                     "channel_id": "fjjfiodsqpjf"
                                 },
                                 {
-                                    "videoId": "9TycLR0TqFA",
+                                    "video_id": "9TycLR0TqFA",
                                     "title": "Why I didn't ate my father",
                                     "viewCount": 256,
                                     "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
@@ -166,7 +166,7 @@ def listTrainings() -> List[Syllabus]:
                             "title": "Utilisation des divs",
                             "videos": [
                                 {
-                                    "videoId": "9TycLR0TqFA",
+                                    "video_id": "9TycLR0TqFA",
                                     "title": "Why I didn't ate my father",
                                     "viewCount": 256,
                                     "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
@@ -175,7 +175,7 @@ def listTrainings() -> List[Syllabus]:
                                     "channel_id": "fjjfiodsqpjf"
                                 },
                                 {
-                                    "videoId": "9TycLR0TqFA",
+                                    "video_id": "9TycLR0TqFA",
                                     "title": "Why I didn't ate my father",
                                     "viewCount": 256,
                                     "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
@@ -184,7 +184,7 @@ def listTrainings() -> List[Syllabus]:
                                     "channel_id": "fjjfiodsqpjf"
                                 },
                                 {
-                                    "videoId": "9TycLR0TqFA",
+                                    "video_id": "9TycLR0TqFA",
                                     "title": "Why I didn't ate my father",
                                     "viewCount": 256,
                                     "description": "lorem ipsum dolor est jfdksmlq jfdqsjfdmklsqjfdklsqjfmklqs jfkoqsd jmkl fjmklqsd jfkl jqmfj qsdjfmkl dsqmlk jkdsq jmkljf d",
