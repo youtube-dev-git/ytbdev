@@ -1,4 +1,5 @@
 from typing import List
+from unittest import skip
 from Permanent_Classes.syllabus import Syllabus
 from Permanent_Classes.users import User, Learner, Admin, Expert
 
@@ -31,7 +32,6 @@ class MainDAO:
         # de fait le syllabus d'id syllabus_id
         
         DAOObjects2.create_syllabus_lessons(syllabus_id,syllabus.lessons,SessionLocal())
-        DAOObjects2.create_video_lesson(DAOObjects2.create_syllabus_lessons(syllabus_id,syllabus.lessons,SessionLocal()).id,syllabus.lessons.video,SessionLocal())
         
     @classmethod
     def read_syllabus(self, syllabus_id: int) -> Syllabus :
@@ -43,6 +43,7 @@ class MainDAO:
         # Cette fonction liste toutes les formations (syllabus accompagnés de leurs vidéos) 
         # présentes dans la base de données
         ...
+        return DAOObjects2.read_All_syllabus(SessionLocal())
     
     @classmethod
     def list_expert_trainings (self, expert_id : int) -> List[Syllabus] :
