@@ -66,7 +66,7 @@ class AdminDAO:
     def save(self, admin: Admin) -> Admin:
         # Cette fonction enregistre un administrateur en base de données
         ...
-        return DAOObjects.create_admin(admin)
+        return DAOObjects.create_admin(admin, SessionLocal())
 
 class LearnerDAO:
     
@@ -74,7 +74,7 @@ class LearnerDAO:
     def save(self, learner : Learner) -> Learner:
         # Cette fonction enregistre un aprennant en base de données
         ...
-        return DAOObjects.create_learner(learner)
+        return DAOObjects.create_learner(learner, SessionLocal())
         
 class ExpertDAO(LearnerDAO):
     
@@ -82,4 +82,4 @@ class ExpertDAO(LearnerDAO):
     def save(self, expert : Expert) -> Expert:
         # Cette fonction enregistre un expert en base de données
         ...
-        return DAOObjects.create_expert(expert)
+        return DAOObjects.create_expert(expert, SessionLocal())
