@@ -2,8 +2,7 @@
 from typing import List, Optional
 
 from pydantic import BaseModel
-
-
+    
 
 
 class VideoBase(BaseModel):
@@ -20,29 +19,27 @@ class VideoCreate(VideoBase):
 
 class Video(VideoBase):
     id: int
-    owner_id: int
+    owner_video_id: int
+
     
     class Config:
         orm_mode = True
 
 
-
-    
-    
-
-class LeconBase(BaseModel):
+class LessonBase(BaseModel):
     title : str
-    
 
-class LeconCreate(LeconBase):
+class LessonCreate(LessonBase):
     pass  
 
-class Lecon(LeconBase):
+class Lesson(LessonBase):
     id: int
-    owner_lecon_id: int
-    
+    owner_lesson_id: int
+    video: List[Video] = []
+
     class Config:
         orm_mode = True
+
 
 
 
@@ -55,8 +52,7 @@ class SyllabusCreate(SyllabusBase):
 
 class Syllabus(SyllabusBase):
     id: int
-    video: List[Video] = []
-    lecons: List[Lecon] = []
+    lessons: List[Lesson] = []
 
 
     class Config:
