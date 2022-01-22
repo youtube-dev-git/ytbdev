@@ -24,18 +24,20 @@ class MainDAO:
     def save_syllabus(self,expert_id: int,syllabus : Syllabus) -> int :
         # Cette fonction renvoie l'identifiant en BD du syllabus qui a été stocké
         ...
-    
+        DAOObjects2.create_syllabus(syllabus,SessionLocal())
     @classmethod
     def save_syllabus_videos(self, syllabus : Syllabus, syllabus_id: int) -> None :
         # Cette fonction prend en paramètre un syllabus muni de ses vidéos et actualise
         # de fait le syllabus d'id syllabus_id
-        ...
-    
+        
+        DAOObjects2.create_syllabus_lessons(syllabus_id,syllabus.lessons,SessionLocal())
+        DAOObjects2.create_video_lesson(DAOObjects2.create_syllabus_lessons(syllabus_id,syllabus.lessons,SessionLocal()).id,syllabus.lessons.video,SessionLocal())
+        
     @classmethod
     def read_syllabus(self, syllabus_id: int) -> Syllabus :
         # Cette fonction retourne le syllabus dont l'identifiant est passé en paramètre (id)
         ...
-    
+        DAOObjects2.read_syllabus(syllabus_id,SessionLocal())
     @classmethod
     def list_trainings (self) -> List[Syllabus] :
         # Cette fonction liste toutes les formations (syllabus accompagnés de leurs vidéos) 
@@ -55,7 +57,7 @@ class MainDAO:
         # est retourné avec son identifiant de base de données
         
         # NB: La vérification doit se faire dans l'ordre : admin, puis expert, puis apprenant=====
-        return DAOObjects.login_learners(mail,password,SessionLocal())
+        DAOObjects.login_learners(mail,password,SessionLocal())
         ...
     
 class AdminDAO:
@@ -64,7 +66,7 @@ class AdminDAO:
     def save(self, admin: Admin) -> Admin:
         # Cette fonction enregistre un administrateur en base de données
         ...
-        DAOObjects.create_admin(admin)
+        return DAOObjects.create_admin(admin)
 
 class LearnerDAO:
     
@@ -72,12 +74,12 @@ class LearnerDAO:
     def save(self, learner : Learner) -> Learner:
         # Cette fonction enregistre un aprennant en base de données
         ...
-        return DAOObjects.create_learner(learner, SessionLocal())
-    
+        return DAOObjects.create_learner(learner)
+        
 class ExpertDAO(LearnerDAO):
     
     @classmethod
     def save(self, expert : Expert) -> Expert:
         # Cette fonction enregistre un expert en base de données
         ...
-        DAOObjects.create_expert(expert)
+        return DAOObjects.create_expert(expert)
