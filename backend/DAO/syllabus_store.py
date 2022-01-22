@@ -12,7 +12,7 @@ def save_video(lesson_id: int, video: Video):
     # Instructions pour sauvegarder une seule video
     ...
     
-def save_syllabus(syllabus: Syllabus) -> int:
+def save_syllabus(expert_id: int ,syllabus: Syllabus) -> int:
     # Instructions pour stocker un syllabus (données de la table syllabus uniquement)
     ...
     
@@ -28,9 +28,8 @@ def save_videos(lesson_id: int, video_list: List[Video]):
     for video in video_list:
         save_video(lesson_id, video)
 
-    
 
-def save_full_syllabus(syllabus: Syllabus):
-    sy_id = save_syllabus(syllabus)
+def save_full_syllabus(expert_id: int ,syllabus: Syllabus):
+    sy_id = save_syllabus(expert_id,syllabus)
     save_lessons(sy_id, syllabus["lessons"])
     
