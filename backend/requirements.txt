@@ -1,4 +1,5 @@
 fastapi
 uvicorn
 sqlalchemy
+pydantic
 google-api-python-client
