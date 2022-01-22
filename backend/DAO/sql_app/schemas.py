@@ -29,7 +29,7 @@ class ExpertBase(BaseModel):
     name: str
     photo: str
     gender: str
-    phone: str
+    phone_num: str
     
     statut = "expert"
 
@@ -50,7 +50,7 @@ class LearnerBase(BaseModel):
     name: str
     photo: str
     gender: str
-    phone: str
+    phone_num: str
     
     statut = "learner"
 
