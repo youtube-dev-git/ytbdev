@@ -15,7 +15,7 @@ def get_admins(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_admin(db: Session, admin: schemas.AdminCreate):
-    fake_hashed_password = admin.password + #"notreallyhashed"
+    fake_hashed_password = admin.password
     db_admin = models.Admin(email=admin.email, hashed_password=fake_hashed_password, name =admin.name, photo=admin.photo, phone=admin.phone,gender=admin.gender,statut=admin.statut)
     db.add(db_admin)
     db.commit()
@@ -34,7 +34,7 @@ def get_experts(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_expert(db: Session, expert: schemas.ExpertCreate):
-    fake_hashed_password = expert.password + "notreallyhashed"
+    fake_hashed_password = expert.password
     db_expert = models.Expert(email=expert.email, hashed_password=fake_hashed_password, name =expert.name, photo=expert.photo, phone=expert.phone,gender=expert.gender,statut=expert.statut)
     db.add(db_expert)
     db.commit()
