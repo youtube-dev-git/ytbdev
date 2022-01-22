@@ -73,15 +73,15 @@
             </section>
         </div>
     </div>
-    <h1>Tous nos Sylabus</h1>
+    <h1>Tous nos Syllabus</h1>
     <div class="all_sylab">
        <div class="sylab_all">
-               <div v-for="sylab in all" :key="sylab.id" class="sylab_info">
+               <div v-for="sylab in db_sylab" :key="sylab.id" class="sylab_info">
                  <router-link :to="{name: 'Course', params: {id:sylab.id } }" class="link">
-                  <img v-bind:src="require('../../src/assets/' + sylab.img)" alt="">
+                  <img src="../../src/assets/Course.png" alt="">
                   <div class="sylab_item">
                     <h1>{{sylab.title}}</h1>
-                    <p>{{sylab.expert}} | <span>Voir info</span> </p>
+                    <p>Dr Youtube | <span>Voir info</span> </p>
                     <div class="sylab_star">
                       <i class="las la-star"></i>
                       <i class="las la-star"></i>
@@ -90,7 +90,7 @@
                       <i class="las la-star"></i>
                     </div>
                     <div class="sylab_link">
-                      <p>Frontend</p>
+                      <p>Web</p>
                     </div>
                   </div>
                  </router-link>
@@ -126,15 +126,26 @@ export default {
       props:{
         sylab: Object
     },
+    created(){
+           this.$store.dispatch('show_sylab')
+                    .then(response =>{
+                this.db_sylab = response.data
+                console.log(response.data)
+            })
+            .catch(error =>{
+                console.log('error', error.response)
+            })
+    },
     data(){
       return{
           sylabus: [
-          {id:"0", title: "HTML et CSS : la formation ULTIME", img:"html_course_1.jpg", tags:"html", mark:"5", expert:"Mr Martin" },
-          {id:"1", title: "Apprendre à coder en HTML et CSS : Cours complet", img:"html_course_4.jpg", tags:"html", mark:"5", expert:"Mr Martin" },
-          {id:"2", title: "JavaScript : la formation ULTIME", img:"javascript_1.jpg", tags:"js", mark:"5", expert:"Mr Martin" },
-          {id:"3", title: "Apprendre à coder en JavaScript : Cours complet", img:"javascript_2.jpg", tags:"js", mark:"5", expert:"Mr Martin" },
-          {id:"4", title: "PHP & Mysql : la formation ULTIME", img:"php_1.jpg", tags:"php", mark:"5", expert:"Mr Martin" },
+          {id:"0", title: "HTML et CSS : la formation ULTIME", img:"html_course_1.jpg", tags:"html", mark:"5", expert:"Dr Youtube " },
+          {id:"1", title: "Apprendre à coder en HTML et CSS : Cours complet", img:"html_course_4.jpg", tags:"html", mark:"5", expert:"Dr Youtube " },
+          {id:"2", title: "JavaScript : la formation ULTIME", img:"javascript_1.jpg", tags:"js", mark:"5", expert:"Dr Youtube " },
+          {id:"3", title: "Apprendre à coder en JavaScript : Cours complet", img:"javascript_2.jpg", tags:"js", mark:"5", expert:"Dr Youtube " },
+          {id:"4", title: "PHP & Mysql : la formation ULTIME", img:"php_1.jpg", tags:"php", mark:"5", expert:"Dr Youtube " },
         ],
+        db_sylab:[],
         search:'frontend'
       }
     },

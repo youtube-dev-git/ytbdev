@@ -2,16 +2,16 @@
     <div>
         <div class="course">
             <div class="course_header">
-                <h1>HTML et CSS : la formation ULTIME {{id}}</h1>
-                <p>Testez et améliorez vos compétences en HTML & CSS grâce à 101 exercices HTML & CSS corrigés allant de débutant à avancé.</p>
-                <p>Nombre Video: <span>00</span></p>
+                <h1>{{course[id-1].title}} </h1>
+                <p>Bienvenue sur notre page de cours dans la quelle nous vous offrons les meilleurs videos youtube .</p>
+                <p>Nombre Lecon: <span>{{course[id-1].lessons.length}}</span></p>
                 <div class="course_star">
                     <i class="las la-star"></i>
                     <i class="las la-star"></i>
                     <i class="las la-star"></i>
                     <i class="las la-star"></i>
                 </div>
-                <p>cree par : <span>Nom_expert</span> | <span>Frontend</span></p>
+                <p>cree par : <span>Dr Youtube</span> | <span>Web Develop</span></p>
             </div>
             <h1 class="txt_title">Programme d'etudes</h1>
             <section class="course_container">
@@ -19,29 +19,29 @@
                    <div class="course_item">
                        <div class="course_descrip">
                           <div class="course_info">
-                             <h1>Introduction HTML & CSS</h1>
-                             <p>Description: <span>Dans ce chapitre nous apprendrons les bases de html (les balises,les classes)</span></p>
+                             <h1>Chapitre 1 :{{course[id-1].title}}</h1>
+                             <p>Description: <span>Aucune....</span></p>
                          </div>
                       </div>
 
                        <div class="sub_menu">
                          <ul>
-                            <li><button class="list_btn">Afficher Videos</button>
+                            <li><button class="list_btn">Afficher Lecon</button>
                             <ul class="lst_lecons">
-                                <li><p class="lecon_title">Lecon_1 : HTML les bases</p> 
+                                <li><p class="lecon_title">Lecon_1 : {{course[id-1].lessons[id-1].title}}</p> 
                                 <ul>
                                     <li class="lecon_item">
                                       <div class="video_item">
                                           <iframe width="270" height="200"  src="https://www.youtube.com/embed/2r6zeeGIfoI"></iframe>
-                                          <iframe width="270" height="200" v-bind:src="'https://www.youtube.com/embed/' + url"></iframe>
+                                          <iframe width="270" height="200" v-bind:src="'https://www.youtube.com/embed/' + course[0].lessons[0].videos[0].videoId"></iframe>
                                       </div>
                                     </li>
-                                    <li class="lecon_item">Lecon2 : video_2</li>
+                                    <li class="lecon_item"></li>
                                 </ul>
                                 </li>
                                 <li><p class="lecon_title">Lecon_2 : CSS les bases</p> 
                                 <ul>
-                                    <li class="lecon_item">Lecon1 : video_1</li>
+                                    <li class="lecon_item"> video_1</li>
                                 </ul> 
                                 </li>
                             </ul>
@@ -54,7 +54,11 @@
                     <h1>Categories</h1>
                   <div class="menu_items">
                      <div class="menu_item">
-                         <p>Nom categorie </p>
+                         <p>HTML</p>
+                         <span>01</span>
+                     </div>
+                    <div class="menu_item">
+                         <p>CSS</p>
                          <span>00</span>
                      </div>
                   </div>
@@ -65,6 +69,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 import Footer from '@/components/Footer.vue'
 export default {
     props:['id'],
@@ -73,11 +78,20 @@ export default {
   },
   data(){
       return{
-          url:"2r6zeeGIfoI"
+          url:"2r6zeeGIfoI",
+          course:[]
       }
   },
   created(){
-    this.tests()
+               axios.get('https://ng70hk.deta.dev/syllabus')
+                    .then(response =>{
+                this.course = response.data
+                console.log(response.data)
+            })
+            .catch(error =>{
+                console.log('error', error.response)
+            })
+
   },
   methods:{
         tests: function(){

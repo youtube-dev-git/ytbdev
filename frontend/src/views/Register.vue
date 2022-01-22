@@ -64,6 +64,7 @@
 
 <script>
 import register from '@/classes/class_register.js';
+import axios from 'axios'
 export default {
     created(){
         
@@ -128,6 +129,7 @@ export default {
     click(){
         if(this.name && this.email && this.phone && this.sex  && this.password===this.password2 ){
             this.$store.dispatch('register', {
+                 status: this.statut,
                  user:{
                   name: this.name,
                   email: this.email,
@@ -136,15 +138,16 @@ export default {
                   gender: this.sex,
                   photo: this.img,
                  },
-                  statut: this.statut,
             })
             .then( () =>{
-              
-            })
-              if(this.statut=='Apprenant'){
+               if(this.statut=='Apprenant'){
                  this.$router.push({name: 'Home_user', params: {pseudo:this.name }})
               }
-                console.log('connexion reussi')     
+              else{
+                this.$router.push({name: 'Expert', params: {pseudo:this.name }})
+              }
+            })
+
         }
       register.validate(this.name,this.email,this.phone,this.sex,this.password,this.password2)
     }

@@ -3,7 +3,7 @@
     <div class="exp_nav">
         <h1>Youtube Dev</h1> 
         <ul>
-            <li>expert_name</li>
+            <li>{{pseudo}}</li>
             <li>expert_statut</li>
             <li>deconnecter</li>
         </ul>
@@ -69,6 +69,8 @@
 
 
 export default {
+    props:['pseudo'],
+      name: 'Expert',
   components: {
 
   }

@@ -26,9 +26,10 @@ const routes = [
     component: Login
   },
   {
-    path: '/Expert',
+    path: '/Expert/:pseudo',
     name: 'Expert',
-    component: Expert
+    component: Expert,
+    props: true
   },
   {
     path: '/Expert/add',

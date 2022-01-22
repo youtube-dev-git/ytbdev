@@ -15,7 +15,7 @@
                     <div class="search">
                         <div class="icon"></div>
                         <div class="input">
-                            <input v-model="search" type="text" placeholder="Rechercher Cours">
+                            <input v-model="user_search" type="text" placeholder="Rechercher Cours">
                         </div>
                     </div>
                 </li>
@@ -49,7 +49,8 @@ export default {
   },
   data(){
       return{
-          user_logo:''
+          user_logo:'',
+          user_search:null
       }
   },
   methods:{

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="home_intro">
-        <h1>Une variété de syllabus de diverses formations à votre disposition</h1>
+        <h1>Une variété de syllabus à votre disposition</h1>
         <p>Choisissez juste celles qui vous conviennent.. </p>
     </div>
     <div class="tabset">
@@ -145,11 +145,11 @@ export default {
     data(){
       return{
           sylabus: [
-          {id:"0", title: "HTML et CSS : la formation ULTIME", img:"html_course_1.jpg", tags:"html", mark:"5", expert:"Mr Martin" },
-          {id:"1", title: "Apprendre à coder en HTML et CSS : Cours complet", img:"html_course_4.jpg", tags:"html", mark:"5", expert:"Mr Martin" },
-          {id:"2", title: "JavaScript : la formation ULTIME", img:"javascript_1.jpg", tags:"js", mark:"5", expert:"Mr Martin" },
-          {id:"3", title: "Apprendre à coder en JavaScript : Cours complet", img:"javascript_2.jpg", tags:"js", mark:"5", expert:"Mr Martin" },
-          {id:"4", title: "PHP & Mysql : la formation ULTIME", img:"php_1.jpg", tags:"php", mark:"5", expert:"Mr Martin" },
+          {id:"0", title: "HTML et CSS : la formation ULTIME", img:"html_course_1.jpg", tags:"html", mark:"5", expert:"Dr Youtube " },
+          {id:"1", title: "Apprendre à coder en HTML et CSS : Cours complet", img:"html_course_4.jpg", tags:"html", mark:"5", expert:"Dr Youtube " },
+          {id:"2", title: "JavaScript : la formation ULTIME", img:"javascript_1.jpg", tags:"js", mark:"5", expert:"Dr Youtube " },
+          {id:"3", title: "Apprendre à coder en JavaScript : Cours complet", img:"javascript_2.jpg", tags:"js", mark:"5", expert:"Dr Youtube " },
+          {id:"4", title: "PHP & Mysql : la formation ULTIME", img:"php_1.jpg", tags:"php", mark:"5", expert:"Dr Youtube " },
         ],
         search:'frontend'
       }
