@@ -8,7 +8,7 @@ class AdminBase(BaseModel):
     name: str
     photo: str
     gender: str
-    phone: str
+    phone_num: str
     
     statut = "admin"
 

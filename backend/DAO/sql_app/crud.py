@@ -45,16 +45,19 @@ def get_learner(db: Session, learner_id: int):
     return db.query(models.Learner).filter(models.Learner.id == learner_id).first()
 
 
-def get_learner_by_email(db: Session, email: str,passw):
+def get_learner_by_email_pass(db: Session, email: str,passw:str):    
     return db.query(models.Learner).filter((models.Learner.email == email)&(models.Learner.hashed_password==passw)).first()
+
+def get_learner_by_email(db: Session, email: str):
+    return db.query(models.Learner).filter(models.Learner.email == email).first()
 
 def get_learners(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Learner).offset(skip).limit(limit).all()
 
 
 def create_learner(db: Session, learner: schemas.LearnerCreate):
-    fake_hashed_password = learner.password + "notreallyhashed"
-    db_learner = models.Learner(email=learner.email, hashed_password=fake_hashed_password, name =learner.name, photo=learner.photo, phone=learner.phone,gender=learner.gender,statut=learner.statut)
+    fake_hashed_password = learner.password 
+    db_learner = models.Learner(email=learner.email, hashed_password=fake_hashed_password, name =learner.name, photo=learner.photo, phone_num=learner.phone_num,gender=learner.gender,statut=learner.statut)
     db.add(db_learner)
     db.commit()
     db.refresh(db_learner)

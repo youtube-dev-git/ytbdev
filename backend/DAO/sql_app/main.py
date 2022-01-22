@@ -26,23 +26,9 @@ def get_db():
 ######################
 class DAOObjects(BaseModel):
 ################ loging ####"
-    #@app.post("/admins/", response_model=schemas.Admin)
-    def login_admin(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
-        db_admin = crud.get_admin_by_email(db, email=admin.email)
-        if not db_admin:
-            return None
-        return db_admin
-
-    #@app.post("/experts/", response_model=schemas.Admin)
-    def login_experts(experts: schemas.AdminCreate, db: Session = Depends(get_db)):
-        db_experts = crud.get_expert_by_email(db, email=experts.email)
-        if not db_experts:
-            return None
-        return db_experts  
-
     #@app.post("/learners/", response_model=schemas.Admin)
-    def login_learners(learners: schemas.AdminCreate, db: Session = Depends(get_db)):
-        db_learners = crud.get_learner_by_email(db, email=learners.email)
+    def login_learners(mail:str,passwd:str,db: Session = Depends(get_db)):
+        db_learners = crud.get_learner_by_email_pass(db,email=mail,passw=passwd)
         if not db_learners:
             return None
         return db_learners      

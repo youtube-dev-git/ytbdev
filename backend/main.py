@@ -47,8 +47,9 @@ def index(query : TypeUser):
     else:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, 
                             detail= "Invalid status")
-        
+    # print(user)
     new_user = user.register()
+    print(new_user)
     if not new_user :
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, 
                             detail= "The user already exists in the site")
