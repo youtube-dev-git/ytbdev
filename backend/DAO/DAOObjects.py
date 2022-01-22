@@ -43,7 +43,7 @@ class MainDAO:
         # Cette fonction liste toutes les formations (syllabus accompagnés de leurs vidéos) 
         # présentes dans la base de données
         ...
-        return DAOObjects2.read_All_syllabus(SessionLocal())
+        return DAOObjects2.read_All_syllabus(0,100,SessionLocal())
     
     @classmethod
     def list_expert_trainings (self, expert_id : int) -> List[Syllabus] :
