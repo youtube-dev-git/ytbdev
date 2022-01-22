@@ -61,6 +61,3 @@ class DAOObjects2(BaseModel):
         for video in video_list:
             DAOObjects2.create_video_lesson(lesson_id,video,SessionLocal())
 
-    def save_full_syllabus(syllabus: Syllabus):
-        sy_id = save_syllabus(expert_id,syllabus)
-        save_lessons(sy_id, syllabus["lessons"])
