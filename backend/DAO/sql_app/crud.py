@@ -6,6 +6,8 @@ from . import models, schemas
 def get_admin(db: Session, admin_id: int):
     return db.query(models.Admin).filter(models.Admin.id == admin_id).first()
 
+def get_admin_by_email_pass(db: Session, email: str,passw:str):    
+    return db.query(models.Admin).filter((models.Admin.email == email)&(models.Admin.hashed_password==passw)).first()
 
 def get_admin_by_email(db: Session, email: str):
     return db.query(models.Admin).filter(models.Admin.email == email).first()
@@ -25,6 +27,8 @@ def create_admin(db: Session, admin: schemas.AdminCreate):
 def get_expert(db: Session, expert_id: int):
     return db.query(models.Expert).filter(models.Expert.id == expert_id).first()
 
+def get_expert_by_email_pass(db: Session, email: str,passw:str):    
+    return db.query(models.Expert).filter((models.Expert.email == email)&(models.Expert.hashed_password==passw)).first()
 
 def get_expert_by_email(db: Session, email: str):
     return db.query(models.Expert).filter(models.Expert.email == email).first()
@@ -44,9 +48,9 @@ def create_expert(db: Session, expert: schemas.ExpertCreate):
 def get_learner(db: Session, learner_id: int):
     return db.query(models.Learner).filter(models.Learner.id == learner_id).first()
 
-
 def get_learner_by_email_pass(db: Session, email: str,passw:str):    
     return db.query(models.Learner).filter((models.Learner.email == email)&(models.Learner.hashed_password==passw)).first()
+
 
 def get_learner_by_email(db: Session, email: str):
     return db.query(models.Learner).filter(models.Learner.email == email).first()

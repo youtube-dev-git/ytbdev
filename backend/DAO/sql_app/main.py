@@ -32,7 +32,19 @@ class DAOObjects(BaseModel):
         db_learners = crud.get_learner_by_email_pass(db,email=mail,passw=passwd)
         if not db_learners:
             return None
-        return db_learners      
+        return db_learners 
+    
+    def login_admins(mail:str,passwd:str,db: Session = Depends(get_db)):
+        db_admins = crud.get_admin_by_email_pass(db,email=mail,passw=passwd)
+        if not db_admins:
+            return None
+        return db_admins 
+
+    def login_experts(mail:str,passwd:str,db: Session = Depends(get_db)):
+        db_experts = crud.get_expert_by_email_pass(db,email=mail,passw=passwd)
+        if not db_experts:
+            return None
+        return db_experts 
 
     ###################### Register ########
     @app.post("/admins/", response_model=schemas.Admin)
