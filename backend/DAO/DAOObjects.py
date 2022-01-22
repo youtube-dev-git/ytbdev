@@ -72,13 +72,8 @@ class LearnerDAO:
     def save(self, learner : Learner) -> Learner:
         # Cette fonction enregistre un aprennant en base de données
         ...
-<<<<<<< HEAD
         return DAOObjects.create_learner(learner, SessionLocal())
     
-=======
-        DAOObjects.create_learner(learner)
-        
->>>>>>> 59d47890964be333dcb77f9683d6fcb1c012c61a
 class ExpertDAO(LearnerDAO):
     
     @classmethod
