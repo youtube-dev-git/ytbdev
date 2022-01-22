@@ -57,7 +57,17 @@ class MainDAO:
         # est retourné avec son identifiant de base de données
         
         # NB: La vérification doit se faire dans l'ordre : admin, puis expert, puis apprenant=====
-        return DAOObjects.login_learners(mail,password,SessionLocal())
+        if(DAOObjects.login_admins(mail,password,SessionLocal())==None):
+            if(DAOObjects.login_experts(mail,password,SessionLocal())==None):
+                if(DAOObjects.login_learners(mail,password,SessionLocal())==None):
+                    return None
+                else:
+                    return DAOObjects.login_learners(mail,password,SessionLocal())
+            else:
+                return DAOObjects.login_experts(mail,password,SessionLocal())
+        else:
+            return DAOObjects.login_admins(mail,password,SessionLocal())
+        #return DAOObjects.login_learners(mail,password,SessionLocal())
         ...
     
 class AdminDAO:
