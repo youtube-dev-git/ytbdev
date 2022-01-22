@@ -42,12 +42,25 @@ class DAOObjects2(BaseModel):
         return db_syllabus
 
     @app.post("/syllabus/{syllabus_id}/lessons/" , response_model=schemas.Lesson)
-    def create_syllabus_lessons(syllabus_id: int, lessons: schemas.LessonCreate, db: Session = Depends(get_db)
-    ):
+    def create_syllabus_lessons(syllabus_id: int, lessons: schemas.LessonCreate, db: Session = Depends(get_db)):
         return crud.create_lesson(db=db, lessons=lessons, syllabus_id=syllabus_id)
 
 
     @app.post("/syllabus/{lessons_id}/video/" , response_model=schemas.Video)
-    def create_video_lesson(lessons_id: int, video: schemas.VideoCreate, db: Session = Depends(get_db)
-    ):
-        return crud.create_video(db=db, video=video, lessons_id=lessons_id)
+    def create_video_lesson(lessons_id: int, video: schemas.VideoCreate, db: Session = Depends(get_db)):
+        crud.create_video(db=db, video=video, lessons_id=lessons_id)
+    
+    def save_lessons(syllabus_id: int, lesson_list: List[schemas.LessonCreate]):
+    #Chaque lesson est enregistrée en BD avec pour id du syllabus (clé secondaire) syllabus_id
+        for lesson in lesson_list:
+            ls_id = (DAOObjects2.create_syllabus_lessons(syllabus_id, lesson, SessionLocal())).id
+            DAOObjects2.save_videos(ls_id, lesson["videos"])
+    
+    def save_videos(lesson_id: int, video_list: List[schemas.VideoCreate]):
+        #Chaque video est enregistrée en BD avec pour id de la lesson (clé secondaire) lesson_id
+        for video in video_list:
+            DAOObjects2.create_video_lesson(lesson_id,video,SessionLocal())
+
+    def save_full_syllabus(syllabus: Syllabus):
+        sy_id = save_syllabus(expert_id,syllabus)
+        save_lessons(sy_id, syllabus["lessons"])
