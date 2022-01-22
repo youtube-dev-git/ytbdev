@@ -59,3 +59,4 @@ def create_learner(db: Session, learner: schemas.LearnerCreate):
     db.commit()
     db.refresh(db_learner)
     return db_learner
+

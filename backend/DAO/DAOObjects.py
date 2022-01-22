@@ -3,6 +3,7 @@ from Permanent_Classes.syllabus import Syllabus
 from Permanent_Classes.users import User, Learner, Admin, Expert
 
 from DAO.sql_app.main import DAOObjects
+from DAO.sql_app2.main import DAOObjects2
 from DAO.sql_app.database import SessionLocal
 # from .Permanent_Classes import users
 
@@ -63,6 +64,7 @@ class AdminDAO:
     def save(self, admin: Admin) -> Admin:
         # Cette fonction enregistre un administrateur en base de données
         ...
+        DAOObjects.create_admin(admin)
 
 class LearnerDAO:
     
@@ -78,3 +80,4 @@ class ExpertDAO(LearnerDAO):
     def save(self, expert : Expert) -> Expert:
         # Cette fonction enregistre un expert en base de données
         ...
+        DAOObjects.create_expert(expert)

@@ -6,13 +6,14 @@ from pydantic import BaseModel
 
 
 class VideoBase(BaseModel):
-    # videoID : str
+    
+    code : str
     title : str
     viewCount : int
     description : str 
-    publishedAt : str
-    thumbnails : str
-    # channel_id : str
+    published_at : str
+    thumbnails_medium : str
+    channel_id : str
 
 class VideoCreate(VideoBase):
     pass  

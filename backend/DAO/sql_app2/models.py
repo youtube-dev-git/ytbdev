@@ -30,11 +30,12 @@ class Video(Base):
     __tablename__ = "video"
 
     id = Column(Integer, primary_key=True, index=True)
+    code = Column(String(50), unique=True, index=True)
     title = Column(String(50), index=True)
     viewCount = Column(Integer, index=True)
     description = Column(String(150), index=True)
-    publishedAt = Column(String(50), index=True)
-    thumbnails = Column(String(50), index=True)
+    published_at = Column(String(50), index=True)
+    thumbnails_medium = Column(String(50), index=True)
     channel_id = Column(String(50), index=True)
     owner_video_id = Column(Integer, ForeignKey("lessons.id"))
 
