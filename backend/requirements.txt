@@ -1,4 +1,4 @@
-fastAPI
+fastapi
 uvicorn
-sqlAlchemy
+sqlalchemy
 google-api-python-client
