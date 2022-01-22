@@ -49,8 +49,7 @@ class SyllabusBase(BaseModel):
 
 
 class SyllabusCreate(SyllabusBase):
-    description: str
-
+    pass
 class Syllabus(SyllabusBase):
     id: int
     lessons: List[Lesson] = []

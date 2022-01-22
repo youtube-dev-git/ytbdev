@@ -15,7 +15,7 @@ def get_All_syllabus(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_syllabus(db: Session, syllabus: schemas.SyllabusCreate):
-    db_syllabus = models.Syllabus(title=syllabus.title, description=syllabus.description)
+    db_syllabus = models.Syllabus(title=syllabus.title)
     db.add(db_syllabus)
     db.commit()
     db.refresh(db_syllabus)
